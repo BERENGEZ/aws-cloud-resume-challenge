@@ -6,3 +6,7 @@ terraform.exe
 *.tfstate
 *.tfstate.backup
 .terraform.lock.hcl
+
+#Ignore local python cache files
+__pycache__/
+*.zip

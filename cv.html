@@ -1,297 +1,361 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Baraka Pande Berenge - CV</title>
     <style>
-        /* Modern CSS Reset & Variables */
-        :root {
-            --primary-color: #1e3a8a; /* Deep Navy Blue for professional look */
-            --secondary-color: #0284c7; /* Sky Blue for highlights */
-            --text-color: #334155; /* Dark Slate for readability */
-            --bg-color: #f8fafc; /* Light grey/blue background */
-            --card-bg: #ffffff;
-        }
+      /* Modern CSS Reset & Variables */
+      :root {
+        --primary-color: #1e3a8a; /* Deep Navy Blue for professional look */
+        --secondary-color: #0284c7; /* Sky Blue for highlights */
+        --text-color: #334155; /* Dark Slate for readability */
+        --bg-color: #f8fafc; /* Light grey/blue background */
+        --card-bg: #ffffff;
+      }
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-space: border-box;
-            box-sizing: border-box;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-space: border-box;
+        box-sizing: border-box;
+      }
 
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        padding: 40px 20px;
+      }
+
+      .cv-container {
+        max-width: 850px;
+        margin: 0 auto;
+        background: var(--card-bg);
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      /* Header Section */
+      header {
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 20px;
+        margin-bottom: 25px;
+      }
+
+      h1 {
+        color: var(--primary-color);
+        font-size: 2.5rem;
+        letter-spacing: -0.5px;
+        margin-bottom: 5px;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        font-size: 0.95rem;
+        color: #64748b;
+      }
+
+      .contact-info a {
+        color: var(--secondary-color);
+        text-decoration: none;
+      }
+
+      .contact-info a:hover {
+        text-decoration: underline;
+      }
+
+      /* Layout Sections */
+      section {
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        color: var(--primary-color);
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 5px;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      /* Job & Education Cards */
+      .entry {
+        margin-bottom: 20px;
+      }
+
+      .entry-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-weight: bold;
+        color: #1e293b;
+      }
+
+      .entry-sub {
+        font-style: italic;
+        color: #64748b;
+        margin-bottom: 5px;
+      }
+
+      ul {
+        list-style-position: inside;
+        margin-left: 10px;
+      }
+
+      li {
+        margin-bottom: 5px;
+      }
+
+      /* Grid Layout for Skills/Languages */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .skills-category h3 {
+        font-size: 1.05rem;
+        color: var(--secondary-color);
+        margin-bottom: 8px;
+      }
+
+      /* Visitor Counter Badge Placeholder for later */
+      .counter-box {
+        margin-top: 30px;
+        padding: 15px;
+        background: #f1f5f9;
+        border-radius: 6px;
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        border: 1px dashed var(--secondary-color);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 600px) {
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
-            padding: 40px 20px;
+          padding: 10px;
         }
-
         .cv-container {
-            max-width: 850px;
-            margin: 0 auto;
-            background: var(--card-bg);
-            padding: 40px;
-            border-radius: 8px;
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+          padding: 20px;
         }
-
-        /* Header Section */
-        header {
-            border-bottom: 2px solid var(--primary-color);
-            padding-bottom: 20px;
-            margin-bottom: 25px;
-        }
-
-        h1 {
-            color: var(--primary-color);
-            font-size: 2.5rem;
-            letter-spacing: -0.5px;
-            margin-bottom: 5px;
-        }
-
-        .contact-info {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 15px;
-            font-size: 0.95rem;
-            color: #64748b;
-        }
-
-        .contact-info a {
-            color: var(--secondary-color);
-            text-decoration: none;
-        }
-
-        .contact-info a:hover {
-            text-decoration: underline;
-        }
-
-        /* Layout Sections */
-        section {
-            margin-bottom: 30px;
-        }
-
-        h2 {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-            border-bottom: 1px solid #e2e8f0;
-            padding-bottom: 5px;
-        }
-
-        p {
-            margin-bottom: 10px;
-        }
-
-        /* Job & Education Cards */
-        .entry {
-            margin-bottom: 20px;
-        }
-
         .entry-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: baseline;
-            font-weight: bold;
-            color: #1e293b;
+          flex-direction: column;
         }
-
-        .entry-sub {
-            font-style: italic;
-            color: #64748b;
-            margin-bottom: 5px;
-        }
-
-        ul {
-            list-style-position: inside;
-            margin-left: 10px;
-        }
-
-        li {
-            margin-bottom: 5px;
-        }
-
-        /* Grid Layout for Skills/Languages */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
-        }
-
-        .skills-category h3 {
-            font-size: 1.05rem;
-            color: var(--secondary-color);
-            margin-bottom: 8px;
-        }
-
-        /* Visitor Counter Badge Placeholder for later */
-        .counter-box {
-            margin-top: 30px;
-            padding: 15px;
-            background: #f1f5f9;
-            border-radius: 6px;
-            text-align: center;
-            font-size: 0.9rem;
-            font-weight: bold;
-            color: var(--primary-color);
-            border: 1px dashed var(--secondary-color);
-        }
-
-        /* Responsive adjustments */
-        @media (max-width: 600px) {
-            body { padding: 10px; }
-            .cv-container { padding: 20px; }
-            .entry-header { flex-direction: column; }
-        }
+      }
     </style>
-</head>
-<body>
-
-<div class="cv-container">
-    <header>
+  </head>
+  <body>
+    <div class="cv-container">
+      <header>
         <h1>Baraka Pande Berenge</h1>
         <div class="contact-info">
-            <span>📍 Italy</span>
-            <span>📞 +39 388 118 7358</span>
-            <span>✉️ <a href="mailto:barakaberenge@gmail.com">barakaberenge@gmail.com</a></span>
+          <span>📍 Italy</span>
+          <span>📞 +39 388 118 7358</span>
+          <span
+            >✉️
+            <a href="mailto:barakaberenge@gmail.com"
+              >barakaberenge@gmail.com</a
+            ></span
+          >
         </div>
-    </header>
+      </header>
 
-    <section id="profile">
+      <section id="profile">
         <h2>Profile</h2>
-        <p>IT student currently pursuing a BSc (Honours) in Computing & IT: Communications & Software at The Open University. I have a strong interest in IT systems, cloud technologies, and enterprise environments. I am actively developing my technical knowledge through AWS cloud learning and hands-on practice. Detail-oriented and highly motivated to gain practical experience in IT support, systems, or cloud/audit-related roles.</p>
-    </section>
+        <p>
+          IT student currently pursuing a BSc (Honours) in Computing & IT:
+          Communications & Software at The Open University. I have a strong
+          interest in IT systems, cloud technologies, and enterprise
+          environments. I am actively developing my technical knowledge through
+          AWS cloud learning and hands-on practice. Detail-oriented and highly
+          motivated to gain practical experience in IT support, systems, or
+          cloud/audit-related roles.
+        </p>
+      </section>
 
-    <section id="education">
+      <section id="education">
         <h2>Education</h2>
         <div class="entry">
-            <div class="entry-header">
-                <span>BSc (Hons) Computing & IT</span>
-                <span>2025 - Present</span>
-            </div>
-            <div class="entry-sub">The Open University (Online)</div>
-            <p>Focusing on Communications & Software engineering tracks.</p>
+          <div class="entry-header">
+            <span>BSc (Hons) Computing & IT</span>
+            <span>2025 - Present</span>
+          </div>
+          <div class="entry-sub">The Open University (Online)</div>
+          <p>Focusing on Communications & Software engineering tracks.</p>
         </div>
         <div class="entry">
-            <div class="entry-header">
-                <span>Advanced Diploma in Programming & Software Development</span>
-                <span>2022 - 2024</span>
-            </div>
-            <div class="entry-sub">Italy (Final Grade: 95%)</div>
+          <div class="entry-header">
+            <span>Advanced Diploma in Programming & Software Development</span>
+            <span>2022 - 2024</span>
+          </div>
+          <div class="entry-sub">Italy (Final Grade: 95%)</div>
         </div>
         <div class="entry">
-            <div class="entry-header">
-                <span>High School Diploma</span>
-                <span>2018 - 2022</span>
-            </div>
-            <div class="entry-sub">Nairobi</div>
+          <div class="entry-header">
+            <span>High School Diploma</span>
+            <span>2018 - 2022</span>
+          </div>
+          <div class="entry-sub">Nairobi</div>
         </div>
-    </section>
+      </section>
 
-    <section id="experience">
+      <section id="experience">
         <h2>Work Experience</h2>
         <div class="entry">
-            <div class="entry-header">
-                <span>IT Full Stack Programmer</span>
-                <span>Nov 2023 - June 2024</span>
-            </div>
-            <div class="entry-sub">Onda Informatica</div>
-            <ul>
-                <li>Collaborated with a technical team on several software and system development projects.</li>
-                <li>Gained a deep practical understanding of system architecture and application data flows.</li>
-            </ul>
+          <div class="entry-header">
+            <span>IT Full Stack Programmer</span>
+            <span>Nov 2023 - June 2024</span>
+          </div>
+          <div class="entry-sub">Onda Informatica</div>
+          <ul>
+            <li>
+              Collaborated with a technical team on several software and system
+              development projects.
+            </li>
+            <li>
+              Gained a deep practical understanding of system architecture and
+              application data flows.
+            </li>
+          </ul>
         </div>
         <div class="entry">
-            <div class="entry-header">
-                <span>Reception & Administration</span>
-                <span>Nov 2021 - June 2022</span>
-            </div>
-            <div class="entry-sub">UIL Pineto</div>
-            <ul>
-                <li>Managed customer enquiries, high-volume administrative tasks, and digital schedules.</li>
-                <li>Handled confidential administrative data securely using internal computer systems.</li>
-            </ul>
+          <div class="entry-header">
+            <span>Reception & Administration</span>
+            <span>Nov 2021 - June 2022</span>
+          </div>
+          <div class="entry-sub">UIL Pineto</div>
+          <ul>
+            <li>
+              Managed customer enquiries, high-volume administrative tasks, and
+              digital schedules.
+            </li>
+            <li>
+              Handled confidential administrative data securely using internal
+              computer systems.
+            </li>
+          </ul>
         </div>
         <div class="entry">
-            <div class="entry-header">
-                <span>Team Member</span>
-                <span>2024</span>
-            </div>
-            <div class="entry-sub">Aiuto Pizzaiolo</div>
-            <ul>
-                <li>Worked in a fast-paced, high-pressure team environment.</li>
-                <li>Developed crucial soft skills in active teamwork, crisis management, and strict time allocation.</li>
-            </ul>
+          <div class="entry-header">
+            <span>Team Member</span>
+            <span>2024</span>
+          </div>
+          <div class="entry-sub">Aiuto Pizzaiolo</div>
+          <ul>
+            <li>Worked in a fast-paced, high-pressure team environment.</li>
+            <li>
+              Developed crucial soft skills in active teamwork, crisis
+              management, and strict time allocation.
+            </li>
+          </ul>
         </div>
-    </section>
+      </section>
 
-    <section id="projects">
+      <section id="projects">
         <h2>Cloud Projects</h2>
         <div class="entry">
-            <div class="entry-header">
-                <span>The Cloud Resume Challenge (AWS)</span>
-                <span>In Progress</span>
-            </div>
-            <div class="entry-sub">Self-Directed Cloud Project</div>
-            <ul>
-                <li>Studying AWS core fundamentals using AWS Skill Builder to explore compute, storage, and networking concepts.</li>
-                <li>Deploying this resume as a serverless infrastructure project using S3, CloudFront, and automated workflows.</li>
-            </ul>
+          <div class="entry-header">
+            <span>The Cloud Resume Challenge (AWS)</span>
+            <span>In Progress</span>
+          </div>
+          <div class="entry-sub">Self-Directed Cloud Project</div>
+          <ul>
+            <li>
+              Studying AWS core fundamentals using AWS Skill Builder to explore
+              compute, storage, and networking concepts.
+            </li>
+            <li>
+              Deploying this resume as a serverless infrastructure project using
+              S3, CloudFront, and automated workflows.
+            </li>
+          </ul>
         </div>
-    </section>
+      </section>
 
-    <section id="skills-languages">
+      <section id="skills-languages">
         <div class="skills-grid">
-            <div class="skills-category">
-                <h2>Technical Skills</h2>
-                <ul>
-                    <li><strong>Cloud:</strong> Cloud Fundamentals (AWS - Learning)</li>
-                    <li><strong>IT Core:</strong> Operating Systems, Basic Networking, Infrastructure</li>
-                    <li><strong>Software:</strong> Microsoft Office (Microsoft 365)</li>
-                </ul>
-            </div>
-            <div class="skills-category">
-                <h2>Languages & Soft Skills</h2>
-                <p><strong>Languages:</strong> English (Fluent), Italian (Good)</p>
-                <p><strong>Soft Skills:</strong> Attention to detail, fast/adaptable learner, strong team collaboration, and communication.</p>
-            </div>
+          <div class="skills-category">
+            <h2>Technical Skills</h2>
+            <ul>
+              <li>
+                <strong>Cloud:</strong> Cloud Fundamentals (AWS - Learning)
+              </li>
+              <li>
+                <strong>IT Core:</strong> Operating Systems, Basic Networking,
+                Infrastructure
+              </li>
+              <li>
+                <strong>Software:</strong> Microsoft Office (Microsoft 365)
+              </li>
+            </ul>
+          </div>
+          <div class="skills-category">
+            <h2>Languages & Soft Skills</h2>
+            <p><strong>Languages:</strong> English (Fluent), Italian (Good)</p>
+            <p>
+              <strong>Soft Skills:</strong> Attention to detail, fast/adaptable
+              learner, strong team collaboration, and communication.
+            </p>
+          </div>
         </div>
-    </section>
+      </section>
 
-    <div class="counter-box">
-        🚀 This page has been viewed <span id="counter">0</span> times (Powered by AWS Lambda & DynamoDB).
+      <div class="counter-box">
+        🚀 This page has been viewed <span id="counter">0</span> times (Powered
+        by AWS Lambda & DynamoDB).
+      </div>
     </div>
-</div>
-<script>
-    // Your live production AWS API Gateway Backend Endpoint
-    const apiEndpoint = "https://y3ky04adz8.execute-api.eu-north-1.amazonaws.com/getcount";
+    <div
+      style="
+        text-align: center;
+        margin-top: 50px;
+        font-family: sans-serif;
+        color: #555;
+      "
+    >
+      <p>
+        This page has been viewed
+        <span id="counter" style="font-weight: bold; color: #0073e6">0</span>
+        times.
+      </p>
+    </div>
+    <script>
+      // Your live production AWS API Gateway Backend Endpoint
+      const apiEndpoint =
+        "https://y3ky04adz8.execute-api.eu-north-1.amazonaws.com/counter";
 
-    async function getVisitorCount() {
+      async function getVisitorCount() {
         try {
-            // Checks to make sure the endpoint string exists and isn't empty
-            if (apiEndpoint) {
-                const response = await fetch(apiEndpoint);
-                const data = await response.json();
-                document.getElementById("counter").innerText = data.count;
-            } else {
-                document.getElementById("counter").innerText = "0 (API pending)";
-            }
+          // Checks to make sure the endpoint string exists and isn't empty
+          if (apiEndpoint) {
+            const response = await fetch(apiEndpoint);
+            const data = await response.json();
+            document.getElementById("counter").innerText = data.count;
+          } else {
+            document.getElementById("counter").innerText = "0 (API pending)";
+          }
         } catch (error) {
-            console.error("Error fetching visitor count:", error);
-            document.getElementById("counter").innerText = "Error";
+          console.error("Error fetching visitor count:", error);
+          document.getElementById("counter").innerText = "Error";
         }
-    }
-    
-    // When the page loads, call the function
-    window.onload = getVisitorCount;
-</script>
+      }
 
-<h1>BARAKA BERENGE Testing Automation CI/CD If it works</h1>
-
-</body>
+      // When the page loads, call the function
+      window.onload = getVisitorCount;
+    </script>
+  </body>
 </html>
