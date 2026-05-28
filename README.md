@@ -1,19 +1,44 @@
-# AWS Serverless Cloud Resume Challenge
+# AWS Cloud Resume Challenge
 
-## 🚀 Live Production Demo
-You can view my live, globally distributed cloud resume here: [d3itoxd5u4tvw2.cloudfront.net](https://d3itoxd5u4tvw2.cloudfront.net)
+This project is a full-stack serverless resume application built on AWS using Infrastructure as Code (Terraform) and automated deployment.
 
-## 🏗️ Technical Architecture
-This project is built completely on a serverless microservice architecture using AWS best practices for high availability and security:
+## Live Website
 
+Check out the live resume here: [https://d3itoxd5u4tvw2.cloudfront.net](https://d3itoxd5u4tvw2.cloudfront.net)
 
+---
 
-* **Frontend Hosting:** Static HTML/CSS assets hosted securely within **Amazon S3**.
-* **Global Content Delivery:** **Amazon CloudFront CDN** configured with **Origin Access Control (OAC)** to enforce private bucket security policies and encrypt global traffic via SSL/TLS.
-* **Compute Tier:** **AWS Lambda** executing a serverless Python 3.12 script using tailored IAM access roles.
-* **Database Tier:** **Amazon DynamoDB** scaling on-demand to handle atomic integer updates for the visitor count.
-* **API Management:** **AWS API Gateway (HTTP API)** exposing a public `/getcount` route with custom Cross-Origin Resource Sharing (CORS) rules.
+## The Architecture
 
-## 🛠️ Key Troubleshoots & Engineering Gains
-1. **CORS Optimization:** Resolved browser-level security blocks by explicitly structuring allowable origins (`*`), headers (`content-type`), and methods (`GET`, `OPTIONS`) at the API Gateway layer.
-2. **CDN Cache Invalidation:** Implemented programmatic edge mutations utilizing wildcard invalidations (`/*`) to force worldwide node propagation upon content modification.
+[ User Browser ]
+│
+├───► (HTML/CSS Static Page) ───► [ Amazon CloudFront ] ───► [ AWS S3 Bucket ]
+│
+
+└───► (JavaScript Fetch) ───────► [ AWS API Gateway ] ───► [ AWS Lambda ] ───► [ DynamoDB ]
+
+The system breaks down into two core layers:
+
+- **Frontend:** A responsive HTML/CSS resume hosted inside an Amazon S3 bucket, distributed globally via a CloudFront CDN distribution to ensure fast load times.
+- **Backend:** A dynamic visitor counter. When the page loads, an asynchronous JavaScript fetch request hits an AWS API Gateway endpoint. This triggers an AWS Lambda function (written in Python 3.12) that increments a visitor count record stored in an Amazon DynamoDB NoSQL table and returns the updated number to the screen.
+
+---
+
+## Problems Solved During Development
+
+Building this project required troubleshooting several core infrastructure roadblocks:
+
+- **CORS Pre-flight Issues:** The browser initially blocked the website from reading data from the API endpoint. I fixed this by updating the Terraform routing configuration from a strict `GET` method to an `ANY` route catchment key. This allowed the backend Python script to successfully capture and respond to browser `OPTIONS` pre-flight requests with the correct access control headers.
+- **CloudFront Edge Caching:** Because CloudFront caches files at global edge locations for up to 24 hours, updates made to the frontend HTML file weren't appearing live. I resolved this by adding manual cache invalidations (`/*`) to force immediate updates across the CDN distribution network.
+- **DOM Timing Mismatch:** Early on, the JavaScript script would occasionally fire before the browser finished rendering the text elements on the page, resulting in the counter getting stuck at 0. Wrapping the logic in an asynchronous `DOMContentLoaded` listener with a brief timeout fixed the execution order.
+
+---
+
+## Technologies Used
+
+- **Frontend:** HTML5, CSS3, JavaScript (Fetch API)
+- **Infrastructure as Code:** Terraform
+- **Compute:** AWS Lambda (Python)
+- **API:** AWS API Gateway
+- **Storage & CDN:** AWS S3, Amazon CloudFront
+- **Database:** Amazon DynamoDB
