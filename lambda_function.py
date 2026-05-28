@@ -24,9 +24,9 @@ def lambda_handler(event, context):
         return{
             'statusCode': 200,
             'headers': {
-                'Access_Control_Allow_Origin': '*',
-                'Access_Control_Allow_Headers': 'Content-Type',
-                'Access_Control_Allow_Methods': 'GET, OPTIONS'
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Methods': 'GET, OPTIONS'
             },
             'body':json.dumps({'count': views})
             }
