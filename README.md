@@ -30,7 +30,6 @@ Building this project required troubleshooting several core infrastructure roadb
 
 - **CORS Pre-flight Issues:** The browser initially blocked the website from reading data from the API endpoint. I fixed this by updating the Terraform routing configuration from a strict `GET` method to an `ANY` route catchment key. This allowed the backend Python script to successfully capture and respond to browser `OPTIONS` pre-flight requests with the correct access control headers.
 - **CloudFront Edge Caching:** Because CloudFront caches files at global edge locations for up to 24 hours, updates made to the frontend HTML file weren't appearing live. I resolved this by adding manual cache invalidations (`/*`) to force immediate updates across the CDN distribution network.
-- **DOM Timing Mismatch:** Early on, the JavaScript script would occasionally fire before the browser finished rendering the text elements on the page, resulting in the counter getting stuck at 0. Wrapping the logic in an asynchronous `DOMContentLoaded` listener with a brief timeout fixed the execution order.
 
 ---
 
