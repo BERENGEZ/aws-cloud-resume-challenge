@@ -35,6 +35,9 @@ def lambda_handler(event, context):
         print(f"Error updating the counter: {str(e)}")
         return {
             'statusCode': 500,
+            'headers':{
+                'Access-Control-Allow-Origin': '*'
+            },
             'body': json.dumps({'error': 'Internal Server Error'})
         }
                
