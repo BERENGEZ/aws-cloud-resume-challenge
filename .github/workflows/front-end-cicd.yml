@@ -31,4 +31,4 @@ jobs:
       # 5. Clear the global CloudFront CDN cache so the whole world instantly sees our updates
       - name: Invalidate CloudFront Cache Distributed Nodes
         run: |
-          aws cloudfront create-invalidation --distribution-id E2KQFNNQRKI1FJ --paths "/*"
+          aws cloudfront create-invalidation --distribution-id E2KQFNNQRKI1FJ --paths "/*" "/frontend/*" "/java-script/*" "/css-files/*"
