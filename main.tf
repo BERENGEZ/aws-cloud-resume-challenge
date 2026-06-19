@@ -129,7 +129,7 @@ resource "aws_apigatewayv2_integration" "api_lambda_integration" {
 
 resource "aws_apigatewayv2_route" "api_route" {
   api_id    = aws_apigatewayv2_api.lambda_api.id
-  route_key = "GET /counter"
+  route_key = "ANY /counter"
   target    = "integrations/${aws_apigatewayv2_integration.api_lambda_integration.id}"
 }
 

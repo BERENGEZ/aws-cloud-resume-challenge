@@ -1,0 +1,151 @@
+
+      :root {
+        --primary-color: #1e3a8a; /* Deep Navy Blue for professional look */
+        --secondary-color: #0284c7; /* Sky Blue for highlights */
+        --text-color: #334155; /* Dark Slate for readability */
+        --bg-color: #f8fafc; /* Light grey/blue background */
+        --card-bg: #ffffff;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-space: border-box;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--bg-color);
+        padding: 40px 20px;
+      }
+
+      .cv-container {
+        max-width: 850px;
+        margin: 0 auto;
+        background: var(--card-bg);
+        padding: 40px;
+        border-radius: 8px;
+        box-shadow:
+          0 4px 6px -1px rgba(0, 0, 0, 0.1),
+          0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      }
+
+      /* Header Section */
+      header {
+        border-bottom: 2px solid var(--primary-color);
+        padding-bottom: 20px;
+        margin-bottom: 25px;
+      }
+
+      h1 {
+        color: var(--primary-color);
+        font-size: 2.5rem;
+        letter-spacing: -0.5px;
+        margin-bottom: 5px;
+      }
+
+      .contact-info {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 15px;
+        font-size: 0.95rem;
+        color: #64748b;
+      }
+
+      .contact-info a {
+        color: var(--secondary-color);
+        text-decoration: none;
+      }
+
+      .contact-info a:hover {
+        text-decoration: underline;
+      }
+
+      /* Layout Sections */
+      section {
+        margin-bottom: 30px;
+      }
+
+      h2 {
+        color: var(--primary-color);
+        font-size: 1.3rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin-bottom: 15px;
+        border-bottom: 1px solid #e2e8f0;
+        padding-bottom: 5px;
+      }
+
+      p {
+        margin-bottom: 10px;
+      }
+
+      /* Job & Education Cards */
+      .entry {
+        margin-bottom: 20px;
+      }
+
+      .entry-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: baseline;
+        font-weight: bold;
+        color: #1e293b;
+      }
+
+      .entry-sub {
+        font-style: italic;
+        color: #64748b;
+        margin-bottom: 5px;
+      }
+
+      ul {
+        list-style-position: inside;
+        margin-left: 10px;
+      }
+
+      li {
+        margin-bottom: 5px;
+      }
+
+      /* Grid Layout for Skills/Languages */
+      .skills-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+      }
+
+      .skills-category h3 {
+        font-size: 1.05rem;
+        color: var(--secondary-color);
+        margin-bottom: 8px;
+      }
+
+      /* Visitor Counter Badge Placeholder for later */
+      .counter-box {
+        margin-top: 30px;
+        padding: 15px;
+        background: #f1f5f9;
+        border-radius: 6px;
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: bold;
+        color: var(--primary-color);
+        border: 1px dashed var(--secondary-color);
+      }
+
+      /* Responsive adjustments */
+      @media (max-width: 600px) {
+        body {
+          padding: 10px;
+        }
+        .cv-container {
+          padding: 20px;
+        }
+        .entry-header {
+          flex-direction: column;
+        }
+      }
