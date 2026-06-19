@@ -29,3 +29,4 @@ async function loadDashboard() {
     document.getElementById("api-latency").innerText = "Error";
   }
 }
+loadDashboard();
