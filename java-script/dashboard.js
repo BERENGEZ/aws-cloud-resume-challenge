@@ -1,3 +1,5 @@
+const apiEndpoint =
+  "https://g3dbaub1j8.execute-api.eu-north-1.amazonaws.com/counter";
 async function loadDashboard() {
   const startTime = performance.now(); // Start clocking latency
   try {
