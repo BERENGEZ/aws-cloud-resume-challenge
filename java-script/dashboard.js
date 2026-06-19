@@ -1,10 +1,9 @@
-const apiEndpoint =
-  "https://g3dbaub1j8.execute-api.eu-north-1.amazonaws.com/counter";
-
 async function loadDashboard() {
   const startTime = performance.now(); // Start clocking latency
   try {
-    const response = await fetch(apiEndpoint);
+    // Append a unique timestamp (?t=...) to bypass local caching
+    const cacheBuster = `?t=${new Date().getTime()}`;
+    const response = await fetch(apiEndpoint + cacheBuster);
 
     if (!response.ok) {
       throw new Error("API unavailable");
@@ -12,7 +11,10 @@ async function loadDashboard() {
 
     const data = await response.json();
     const endTime = performance.now(); // End clocking latency
-    const latency = Math.round(endTime - startTime);
+
+    // Calculate exact difference
+    let latency = Math.round(endTime - startTime);
+    if (latency === 0) latency = 1; // Safeguard for hyper-fast micro-speeds
 
     // Update Dashboard Metrics
     document.getElementById("visitor-count").innerText = data.count;
@@ -26,16 +28,4 @@ async function loadDashboard() {
     document.getElementById("api-status").style.color = "#ef4444";
     document.getElementById("api-latency").innerText = "Error";
   }
-}
-
-// Safe layout timing initialization listener
-if (
-  document.readyState === "complete" ||
-  document.readyState === "interactive"
-) {
-  setTimeout(loadDashboard, 100);
-} else {
-  window.addEventListener("DOMContentLoaded", () =>
-    setTimeout(loadDashboard, 100),
-  );
 }
