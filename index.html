@@ -45,11 +45,71 @@
 
         <!-- Architecture Tab -->
         <section id="architecture" class="tab-content" style="display: none">
-          <h2>Infrastructure Diagram</h2>
-          <p>
-            Details about Proxmox, Nginx, Flask, and GitHub Actions will go
-            here.
-          </p>
+          <div class="arch-intro">
+            <h2>Infrastructure Architecture</h2>
+            <p>
+              A completely self-hosted, bare-metal cloud environment. Here is
+              how traffic flows from a user's browser to the local database.
+            </p>
+          </div>
+
+          <div class="arch-grid">
+            <div class="arch-card">
+              <div class="arch-icon">🌐</div>
+              <h4>1. Cloudflare Tunnel</h4>
+              <p>
+                Bypasses ISP CGNAT, providing secure inbound routing and SSL
+                termination without exposing open router ports to the public
+                internet.
+              </p>
+            </div>
+
+            <div class="arch-card">
+              <div class="arch-icon">🖥️</div>
+              <h4>2. Proxmox & Ubuntu</h4>
+              <p>
+                A bare-metal hypervisor running a dedicated Ubuntu Server VM,
+                intelligently allocating isolated CPU and RAM resources.
+              </p>
+            </div>
+
+            <div class="arch-card">
+              <div class="arch-icon">🚦</div>
+              <h4>3. Nginx Web Server</h4>
+              <p>
+                Acts as a reverse proxy. It serves the static frontend
+                (HTML/CSS/JS) and securely routes /api/ requests to the backend.
+              </p>
+            </div>
+
+            <div class="arch-card">
+              <div class="arch-icon">⚙️</div>
+              <h4>4. Python Flask API</h4>
+              <p>
+                Managed by Gunicorn and systemd. This custom REST API processes
+                POST requests and executes the core backend logic.
+              </p>
+            </div>
+
+            <div class="arch-card">
+              <div class="arch-icon">🗄️</div>
+              <h4>5. SQLite Database</h4>
+              <p>
+                Locally stores visitor telemetry and metrics. It is completely
+                isolated from the web, accessible only by the internal API.
+              </p>
+            </div>
+
+            <div class="arch-card">
+              <div class="arch-icon">🚀</div>
+              <h4>6. CI/CD Pipeline</h4>
+              <p>
+                GitHub Actions triggers a self-hosted runner directly on the
+                Ubuntu VM to automatically pull and deploy new code upon every
+                commit.
+              </p>
+            </div>
+          </div>
         </section>
 
         <!-- Server Health Tab -->

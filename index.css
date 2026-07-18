@@ -266,3 +266,66 @@ p {
     transform: translateY(30px) scale(1.05);
   }
 }
+
+/* =========================================
+   ARCHITECTURE TAB STYLING 
+   ========================================= */
+.arch-intro {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.arch-intro h2 {
+  font-size: 2.5rem;
+  color: #0f172a;
+  font-weight: 800;
+}
+
+.arch-intro p {
+  color: #475569;
+  font-size: 1.1rem;
+  max-width: 650px;
+  margin: 0 auto;
+}
+
+.arch-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 25px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.arch-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  border-radius: 16px;
+  padding: 30px 25px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.arch-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.arch-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.arch-card h4 {
+  color: #0284c7; /* Professional blue */
+  font-size: 1.2rem;
+  margin-bottom: 12px;
+}
+
+.arch-card p {
+  font-size: 0.95rem;
+  color: #475569;
+  line-height: 1.6;
+  margin-bottom: 0;
+}
