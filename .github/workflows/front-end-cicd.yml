@@ -50,4 +50,4 @@ jobs:
 
       - name: Deploy to Nginx Web Folder
         run: |
-          cp -a . /var/www/html/
+          rsync -av --exclude='.git' --exclude='.github' --exclude='.terraform' --exclude='*.tf*' --exclude='*.py' ./ /var/www/html/
