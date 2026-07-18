@@ -57,8 +57,8 @@ body {
   max-width: 1200px;
   height: 85vh;
   background: rgba(255, 255, 255, 0.45); /* Bright, frosted white */
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.8);
   border-radius: 24px;
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.08); /* Soft, elegant shadow */
@@ -136,6 +136,19 @@ p {
 /* =========================================
    THE NEW CV / RESUME STYLING 
    ========================================= */
+
+/* Categorized Skills */
+.skills-category {
+  margin-bottom: 25px;
+}
+
+.skills-category h4 {
+  font-size: 0.95rem;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 12px;
+}
 
 /* The Resume Document Card */
 .resume-document {
@@ -268,66 +281,75 @@ p {
 }
 
 /* =========================================
-   ARCHITECTURE TAB STYLING 
+   NEW ARCHITECTURE DIAGRAM & LESSONS 
    ========================================= */
-.arch-intro {
-  text-align: center;
-  margin-bottom: 40px;
+.arch-diagram-container {
+  background: #0f172a; /* Dark terminal background */
+  border-radius: 12px;
+  padding: 30px;
+  margin-bottom: 50px;
+  box-shadow: inset 0 0 20px rgba(0, 0, 0, 0.5);
+  overflow-x: auto;
 }
 
-.arch-intro h2 {
-  font-size: 2.5rem;
-  color: #0f172a;
-  font-weight: 800;
+.arch-diagram-container h3 {
+  color: #94a3b8;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #334155;
+  padding-bottom: 10px;
 }
 
-.arch-intro p {
-  color: #475569;
-  font-size: 1.1rem;
-  max-width: 650px;
-  margin: 0 auto;
+.ascii-diagram {
+  font-family: "JetBrains Mono", "Courier New", Courier, monospace;
+  color: #00ffcc; /* Techy terminal green */
+  font-size: 1rem;
+  line-height: 1.5;
+  white-space: pre;
 }
 
-.arch-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-  gap: 25px;
-  max-width: 1000px;
-  margin: 0 auto;
-}
-
-.arch-card {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(255, 255, 255, 0.9);
+.arch-lessons {
+  margin-top: 50px;
+  background: #ffffff;
   border-radius: 16px;
-  padding: 30px 25px;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  padding: 40px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.9);
 }
 
-.arch-card:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+.arch-lessons h3 {
+  font-size: 1.5rem;
+  color: #0f172a;
+  margin-bottom: 20px;
+  border-bottom: 2px solid #0284c7;
+  padding-bottom: 10px;
+  display: inline-block;
 }
 
-.arch-icon {
-  font-size: 2.5rem;
+.lessons-list {
+  list-style: none;
+}
+
+.lessons-list li {
   margin-bottom: 15px;
-}
-
-.arch-card h4 {
-  color: #0284c7; /* Professional blue */
-  font-size: 1.2rem;
-  margin-bottom: 12px;
-}
-
-.arch-card p {
-  font-size: 0.95rem;
-  color: #475569;
   line-height: 1.6;
-  margin-bottom: 0;
+  color: #475569;
+  padding-left: 25px;
+  position: relative;
+}
+
+.lessons-list li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: #0284c7;
+  font-weight: bold;
+}
+
+.lessons-list strong {
+  color: #1e293b;
 }
 
 /* =========================================
@@ -343,7 +365,6 @@ p {
   color: #0f172a;
   font-weight: 800;
 }
-
 .health-intro p {
   color: #475569;
   font-size: 1.1rem;
@@ -352,48 +373,46 @@ p {
 }
 
 .health-grid {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
 }
 
 .health-widget {
   background: #ffffff;
-  border-radius: 16px;
-  padding: 30px;
-  width: 250px;
-  text-align: center;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+  padding: 25px 20px;
+  text-align: left;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
   border: 1px solid rgba(255, 255, 255, 0.9);
-  transition:
-    transform 0.3s ease,
-    box-shadow 0.3s ease;
+  transition: transform 0.3s ease;
 }
 
 .health-widget:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-}
-
-.widget-icon {
-  font-size: 2.8rem;
-  margin-bottom: 15px;
+  transform: translateY(-3px);
 }
 
 .widget-label {
   color: #64748b;
-  font-size: 0.95rem;
-  font-weight: 600;
+  font-size: 0.85rem;
+  font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 1px;
-  margin-bottom: 15px;
+  margin-bottom: 10px;
 }
 
 .widget-value {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   font-weight: 800;
   color: #0f172a;
+}
+
+/* Monospace font for telemetry data */
+.mono {
+  font-family: "JetBrains Mono", "Courier New", Courier, monospace;
+  color: #0284c7;
 }
 
 /* =========================================

@@ -39,21 +39,21 @@
             <div class="hero-content">
               <div class="hero-greeting">Hello, I'm Baraka 👋</div>
               <h1 class="hero-title">
-                I engineer <span>resilient</span> infrastructure.
+                I design, deploy, and maintain
+                <span>Linux</span> infrastructure.
               </h1>
               <p class="hero-subtitle">
-                I am a Cloud & DevOps Engineer specializing in systems
-                architecture and enterprise environments. To demonstrate my
-                capabilities, I didn't just write a resume—I engineered a
-                complete, bare-metal private cloud from scratch to host it
-                securely.
+                Rather than hosting this portfolio on a public cloud provider, I
+                built and maintain the infrastructure myself. The site is
+                deployed to an Ubuntu virtual machine running on a Proxmox
+                hypervisor, exposed securely through Cloudflare Tunnel, and
+                updated automatically using GitHub Actions.
               </p>
 
-              <!-- Replaced redundant buttons with value-add info pills -->
               <div class="hero-stats">
                 <div class="stat-pill">📍 Based in Italy</div>
                 <div class="stat-pill">🎓 BSc Computing & IT</div>
-                <div class="stat-pill">⚙️ Bare-Metal Architect</div>
+                <div class="stat-pill">🐧 Systems Engineer</div>
               </div>
             </div>
           </div>
@@ -62,11 +62,36 @@
         <!-- Architecture Tab -->
         <section id="architecture" class="tab-content" style="display: none">
           <div class="arch-intro">
-            <h2>Infrastructure Architecture</h2>
+            <h2>System Architecture</h2>
             <p>
-              A completely self-hosted, bare-metal cloud environment. Here is
-              how traffic flows from a user's browser to the local database.
+              A breakdown of the self-hosted environment, traffic flow, and
+              configuration decisions.
             </p>
+          </div>
+
+          <!-- NEW: ASCII Architecture Diagram -->
+          <div class="arch-diagram-container">
+            <h3>Traffic Flow</h3>
+            <pre class="ascii-diagram">
+Internet
+   │
+Cloudflare DNS
+   │
+Cloudflare Tunnel (Bypasses CGNAT)
+   │
+Proxmox VE (Hypervisor)
+   │
+   └── Ubuntu Server VM
+         │
+         ├── Nginx (Reverse Proxy & TLS)
+         │
+         └── Gunicorn (Process Manager)
+               │
+               └── Flask API (Backend Logic)
+                     │
+                     └── SQLite (Local Metrics)
+</pre
+            >
           </div>
 
           <div class="arch-grid">
@@ -74,9 +99,9 @@
               <div class="arch-icon">🌐</div>
               <h4>1. Cloudflare Tunnel</h4>
               <p>
-                Bypasses ISP CGNAT, providing secure inbound routing and SSL
-                termination without exposing open router ports to the public
-                internet.
+                My ISP uses Carrier-Grade NAT (CGNAT), which prevents inbound
+                connections. Cloudflare Tunnel provides secure public access
+                without exposing router ports or requiring port forwarding.
               </p>
             </div>
 
@@ -84,8 +109,9 @@
               <div class="arch-icon">🖥️</div>
               <h4>2. Proxmox & Ubuntu</h4>
               <p>
-                A bare-metal hypervisor running a dedicated Ubuntu Server VM,
-                intelligently allocating isolated CPU and RAM resources.
+                Proxmox hosts an Ubuntu Server virtual machine with dedicated
+                CPU and memory resources to isolate the application stack from
+                the host OS.
               </p>
             </div>
 
@@ -93,17 +119,19 @@
               <div class="arch-icon">🚦</div>
               <h4>3. Nginx Web Server</h4>
               <p>
-                Acts as a reverse proxy. It serves the static frontend
-                (HTML/CSS/JS) and securely routes /api/ requests to the backend.
+                Acts as a reverse proxy. It serves the static frontend assets
+                and forwards /api/ requests to the backend while handling TLS
+                termination.
               </p>
             </div>
 
             <div class="arch-card">
               <div class="arch-icon">⚙️</div>
-              <h4>4. Python Flask API</h4>
+              <h4>4. Python Flask & Gunicorn</h4>
               <p>
-                Managed by Gunicorn and systemd. This custom REST API processes
-                POST requests and executes the core backend logic.
+                A Flask REST API handles application requests and serves
+                telemetry data. Gunicorn and systemd manage the service in
+                production to ensure high availability and zero manual restarts.
               </p>
             </div>
 
@@ -111,8 +139,9 @@
               <div class="arch-icon">🗄️</div>
               <h4>5. SQLite Database</h4>
               <p>
-                Locally stores visitor telemetry and metrics. It is completely
-                isolated from the web, accessible only by the internal API.
+                Stores visitor metrics locally. The database is accessible only
+                through the internal Flask API and is never exposed directly to
+                the internet.
               </p>
             </div>
 
@@ -120,11 +149,38 @@
               <div class="arch-icon">🚀</div>
               <h4>6. CI/CD Pipeline</h4>
               <p>
-                GitHub Actions triggers a self-hosted runner directly on the
-                Ubuntu VM to automatically pull and deploy new code upon every
-                commit.
+                GitHub Actions triggers a self-hosted runner on the Ubuntu VM,
+                which pulls the latest commit and deploys the application
+                automatically upon push.
               </p>
             </div>
+          </div>
+
+          <!-- NEW: Challenges & Lessons Learned -->
+          <div class="arch-lessons">
+            <h3>Challenges Solved & Lessons Learned</h3>
+            <ul class="lessons-list">
+              <li>
+                <strong>Network Constraints:</strong> Overcame ISP CGNAT
+                limitations by implementing Cloudflare Tunnels for secure
+                ingress.
+              </li>
+              <li>
+                <strong>Process Supervision:</strong> Configured systemd service
+                files to manage Gunicorn, ensuring the API automatically
+                recovers from crashes and reboots.
+              </li>
+              <li>
+                <strong>Deployment Automation:</strong> Replaced manual SFTP
+                file transfers with a self-hosted GitHub Actions runner for
+                instant, reliable CI/CD.
+              </li>
+              <li>
+                <strong>Reverse Proxying:</strong> Configured Nginx routing
+                blocks to separate static file delivery from dynamic API request
+                forwarding.
+              </li>
+            </ul>
           </div>
         </section>
 
@@ -133,38 +189,51 @@
           <div class="health-intro">
             <h2>Live Server Telemetry</h2>
             <p>
-              Real-time metrics fetched directly from the self-hosted Python
-              Flask REST API and internal SQLite database.
+              Real-time system metrics fetched directly from the self-hosted
+              Ubuntu virtual machine via the Flask REST API.
             </p>
           </div>
 
           <div class="health-grid">
-            <!-- Status Widget -->
             <div class="health-widget">
-              <div class="widget-icon">📡</div>
               <div class="widget-label">API Status</div>
-              <div class="widget-value" id="api-status">🟡 Checking...</div>
+              <div class="widget-value mono" id="api-status">
+                🟡 Checking...
+              </div>
             </div>
-
-            <!-- Latency Widget -->
             <div class="health-widget">
-              <div class="widget-icon">⚡</div>
               <div class="widget-label">Response Time</div>
-              <div class="widget-value" id="api-latency">...</div>
+              <div class="widget-value mono" id="api-latency">...</div>
             </div>
-
-            <!-- View Count Widget -->
             <div class="health-widget">
-              <div class="widget-icon">👀</div>
+              <div class="widget-label">System Uptime</div>
+              <div class="widget-value mono" id="sys-uptime">...</div>
+            </div>
+            <div class="health-widget">
+              <div class="widget-label">CPU Usage</div>
+              <div class="widget-value mono" id="sys-cpu">...</div>
+            </div>
+            <div class="health-widget">
+              <div class="widget-label">RAM Usage</div>
+              <div class="widget-value mono" id="sys-ram">...</div>
+            </div>
+            <div class="health-widget">
               <div class="widget-label">Unique Views</div>
-              <div class="widget-value" id="visitor-count">...</div>
+              <div class="widget-value mono" id="visitor-count">...</div>
+            </div>
+            <div class="health-widget">
+              <div class="widget-label">OS Kernel</div>
+              <div class="widget-value mono" id="sys-kernel">...</div>
+            </div>
+            <div class="health-widget">
+              <div class="widget-label">Host OS</div>
+              <div class="widget-value mono" id="sys-os">...</div>
             </div>
           </div>
         </section>
 
         <!-- CV Tab -->
         <section id="resume" class="tab-content" style="display: none">
-          <!-- The Premium Resume Card -->
           <div class="resume-document">
             <header class="cv-header">
               <h1 class="cv-name">Baraka Pande Berenge</h1>
@@ -184,13 +253,10 @@
               <div class="cv-section">
                 <h3>Profile</h3>
                 <p>
-                  IT student pursuing a BSc (Honours) in Computing & IT at The
-                  Open University. Passionate about cloud architectures and
-                  enterprise environments, with hands-on experience designing
-                  and deploying bare-metal infrastructure, automated CI/CD
-                  pipelines, and self-hosted APIs. Highly motivated to leverage
-                  technical skills in systems administration, DevOps, and IT
-                  support roles.
+                  Computing & IT student with hands-on experience building Linux
+                  infrastructure, automating deployments, and developing backend
+                  services. Interested in cloud platforms, systems
+                  administration, and DevOps.
                 </p>
               </div>
 
@@ -198,29 +264,27 @@
                 <h3>Featured Infrastructure Project</h3>
                 <div class="cv-item">
                   <div class="cv-item-header">
-                    <div class="cv-item-title">
-                      Self-Hosted Cloud & CI/CD Pipeline
-                    </div>
+                    <div class="cv-item-title">Self-Hosted Web Platform</div>
                     <div class="cv-item-date">2024 - Present</div>
                   </div>
-                  <div class="cv-item-subtitle">Bare-Metal Environment</div>
+                  <div class="cv-item-subtitle">Proxmox / Ubuntu Server</div>
                   <ul>
                     <li>
-                      Architected a secure, self-hosted private cloud on a
-                      Proxmox hypervisor running an Ubuntu Linux environment.
+                      Built and deployed a self-hosted web platform on a Proxmox
+                      hypervisor running an Ubuntu Server VM.
                     </li>
                     <li>
-                      Engineered an automated CI/CD pipeline using GitHub
-                      Actions and self-hosted runners to deploy code directly to
-                      Nginx.
+                      Published the application through Cloudflare Tunnel to
+                      overcome ISP Carrier-Grade NAT without exposing inbound
+                      router ports.
                     </li>
                     <li>
-                      Developed a Python Flask REST API managed by Gunicorn and
-                      systemd to serve live backend metrics.
+                      Configured systemd to supervise Gunicorn and Nginx,
+                      ensuring zero-downtime automated service restarts.
                     </li>
                     <li>
-                      Bypassed local CGNAT firewalls by establishing a secure
-                      Cloudflare Tunnel for global web routing.
+                      Built a GitHub Actions pipeline utilizing self-hosted
+                      runners for reliable, automated code deployments.
                     </li>
                   </ul>
                 </div>
@@ -236,12 +300,10 @@
                   <div class="cv-item-subtitle">Onda Informatica</div>
                   <ul>
                     <li>
-                      Collaborated with a technical team across several system
-                      development projects.
-                    </li>
-                    <li>
-                      Gained practical understanding of system architecture,
-                      data flow, and full-stack integration.
+                      Worked with a development team on web applications,
+                      contributing to frontend and backend features while
+                      gaining practical experience with software architecture
+                      and system integration.
                     </li>
                   </ul>
                 </div>
@@ -270,17 +332,37 @@
               </div>
 
               <div class="cv-section">
-                <h3>Skills & Languages</h3>
-                <div class="cv-skills">
-                  <span class="cv-skill-tag">Proxmox VE</span>
-                  <span class="cv-skill-tag">Linux (Ubuntu)</span>
-                  <span class="cv-skill-tag">Nginx</span>
-                  <span class="cv-skill-tag">Python (Flask/API)</span>
-                  <span class="cv-skill-tag">CI/CD (GitHub Actions)</span>
-                  <span class="cv-skill-tag">AWS Fundamentals</span>
-                  <span class="cv-skill-tag">Git Version Control</span>
-                  <span class="cv-skill-tag">English (Fluent)</span>
-                  <span class="cv-skill-tag">Italian (Good)</span>
+                <h3>Technical Skills</h3>
+
+                <div class="skills-category">
+                  <h4>Infrastructure & OS</h4>
+                  <div class="cv-skills">
+                    <span class="cv-skill-tag">Linux (Ubuntu)</span>
+                    <span class="cv-skill-tag">Proxmox VE</span>
+                    <span class="cv-skill-tag">Nginx</span>
+                    <span class="cv-skill-tag">systemd</span>
+                    <span class="cv-skill-tag">Cloudflare Tunnel</span>
+                  </div>
+                </div>
+
+                <div class="skills-category">
+                  <h4>Development & Database</h4>
+                  <div class="cv-skills">
+                    <span class="cv-skill-tag">Python</span>
+                    <span class="cv-skill-tag">Flask</span>
+                    <span class="cv-skill-tag">REST APIs</span>
+                    <span class="cv-skill-tag">SQLite</span>
+                  </div>
+                </div>
+
+                <div class="skills-category">
+                  <h4>DevOps & Cloud</h4>
+                  <div class="cv-skills">
+                    <span class="cv-skill-tag">Git</span>
+                    <span class="cv-skill-tag">GitHub Actions (CI/CD)</span>
+                    <span class="cv-skill-tag">Gunicorn</span>
+                    <span class="cv-skill-tag">AWS Fundamentals</span>
+                  </div>
                 </div>
               </div>
             </div>
