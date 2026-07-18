@@ -34,13 +34,29 @@
       <!-- Main Content Area -->
       <main class="content-area">
         <!-- Welcome Tab -->
+        <!-- Welcome Tab -->
         <section id="welcome" class="tab-content active-tab">
-          <h1>This website isn't hosted in the cloud.</h1>
-          <p>
-            It is running on a bare-metal Proxmox hypervisor in my room,
-            securely tunneled to the web, and updated via automated CI/CD
-            pipelines.
-          </p>
+          <div class="hero-section">
+            <div class="hero-content">
+              <h1 class="hero-title">
+                This website isn't hosted in the <span>cloud</span>.
+              </h1>
+              <p class="hero-subtitle">
+                It is running on a bare-metal Proxmox hypervisor in my room,
+                securely tunneled to the web, and updated via automated CI/CD
+                pipelines.
+              </p>
+
+              <div class="hero-actions">
+                <button class="primary-btn" onclick="switchTab('architecture')">
+                  View Architecture
+                </button>
+                <button class="secondary-btn" onclick="switchTab('resume')">
+                  Read My CV
+                </button>
+              </div>
+            </div>
+          </div>
         </section>
 
         <!-- Architecture Tab -->
