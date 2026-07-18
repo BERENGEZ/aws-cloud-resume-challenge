@@ -1,43 +1,57 @@
-// My live production Self-Hosted Nginx Backend Endpoint
-const apiEndpoint = "/api/count";
-
-async function loadDashboard() {
-  const startTime = performance.now(); // Start clocking latency
+// 1. Log a new visitor EXACTLY ONCE when the page loads
+async function logVisit() {
   try {
-    // Append a unique timestamp (?t=...) to bypass local caching
-    const cacheBuster = `?t=${new Date().getTime()}`;
-
-    // We update this fetch to use POST as well
-    const response = await fetch(apiEndpoint + cacheBuster, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error("API unavailable");
-    }
-
-    const data = await response.json();
-    const endTime = performance.now(); // End clocking latency
-
-    // Calculate exact difference
-    let latency = Math.round(endTime - startTime);
-    if (latency === 0) latency = 1; // Safeguard for hyper-fast micro-speeds
-
-    // Update Dashboard Metrics (using data.visitor_count)
-    document.getElementById("visitor-count").innerText = data.visitor_count;
-    document.getElementById("api-status").innerText = "🟢 Online";
-    document.getElementById("api-status").style.color = "#22c55e";
-    document.getElementById("api-latency").innerText = `${latency}ms`;
+    // ⚠️ Replace with your actual domain name!
+    await fetch("https://your-api-url.com/api/count", { method: "POST" });
   } catch (error) {
-    console.error("Dashboard metric fetch failed:", error);
-    document.getElementById("visitor-count").innerText = "Unavailable";
+    console.error("Failed to log visit:", error);
+  }
+}
+logVisit();
+
+// Function to fetch and update server metrics
+async function updateTelemetry() {
+  const startTime = performance.now(); // Start timer for latency
+
+  try {
+    // ⚠️ IMPORTANT: Replace this URL with your actual Flask API endpoint
+    const response = await fetch("https://your-api-url.com/api/telemetry");
+    const data = await response.json();
+
+    const endTime = performance.now(); // End timer for latency
+    const latency = Math.round(endTime - startTime);
+
+    // 1. Update API Status & Latency
+    document.getElementById("api-status").innerText = `🟢 ${data.status}`;
+    document.getElementById("api-latency").innerText = `${latency} ms`;
+
+    // 2. Update Hardware Metrics
+    document.getElementById("sys-uptime").innerText = data.uptime;
+    document.getElementById("sys-cpu").innerText = data.cpu_usage;
+    document.getElementById("sys-ram").innerText = data.ram_usage;
+    document.getElementById("sys-kernel").innerText = data.kernel;
+    document.getElementById("sys-os").innerText = data.os;
+
+    // 3. Update Database Metrics
+    document.getElementById("visitor-count").innerText = data.visitors;
+  } catch (error) {
+    console.error("Telemetry Fetch Error:", error);
+
+    // If the API crashes or is unreachable, update the UI to reflect the outage
     document.getElementById("api-status").innerText = "🔴 Offline";
-    document.getElementById("api-status").style.color = "#ef4444";
-    document.getElementById("api-latency").innerText = "Error";
+    document.getElementById("api-status").style.color = "#ef4444"; // Red text
+
+    const fallbackText = "ERR";
+    document.getElementById("api-latency").innerText = fallbackText;
+    document.getElementById("sys-uptime").innerText = fallbackText;
+    document.getElementById("sys-cpu").innerText = fallbackText;
+    document.getElementById("sys-ram").innerText = fallbackText;
+    document.getElementById("visitor-count").innerText = fallbackText;
   }
 }
 
-loadDashboard();
+// 1. Run immediately when the script loads
+updateTelemetry();
+
+// 2. Refresh the data automatically every 5 seconds (5000 milliseconds)
+setInterval(updateTelemetry, 5000);
