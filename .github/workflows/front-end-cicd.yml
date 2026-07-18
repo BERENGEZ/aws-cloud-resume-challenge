@@ -51,3 +51,8 @@ jobs:
       - name: Deploy to Nginx Web Folder
         run: |
           rsync -av --exclude='.git' --exclude='.github' --exclude='.terraform' --exclude='*.tf*' --exclude='*.py' ./ /var/www/html/
+
+      - name: Deploy Backend API
+        run: |
+          mkdir -p /home/berengez_cloud/api-backend
+          cp api.py /home/berengez_cloud/api-backend/api.py
