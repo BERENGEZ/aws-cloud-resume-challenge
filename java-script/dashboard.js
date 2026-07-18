@@ -1,11 +1,19 @@
-const apiEndpoint =
-  "https://g3dbaub1j8.execute-api.eu-north-1.amazonaws.com/counter";
+// My live production Self-Hosted Nginx Backend Endpoint
+const apiEndpoint = "/api/count";
+
 async function loadDashboard() {
   const startTime = performance.now(); // Start clocking latency
   try {
     // Append a unique timestamp (?t=...) to bypass local caching
     const cacheBuster = `?t=${new Date().getTime()}`;
-    const response = await fetch(apiEndpoint + cacheBuster);
+
+    // We update this fetch to use POST as well
+    const response = await fetch(apiEndpoint + cacheBuster, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
 
     if (!response.ok) {
       throw new Error("API unavailable");
@@ -18,8 +26,8 @@ async function loadDashboard() {
     let latency = Math.round(endTime - startTime);
     if (latency === 0) latency = 1; // Safeguard for hyper-fast micro-speeds
 
-    // Update Dashboard Metrics
-    document.getElementById("visitor-count").innerText = data.count;
+    // Update Dashboard Metrics (using data.visitor_count)
+    document.getElementById("visitor-count").innerText = data.visitor_count;
     document.getElementById("api-status").innerText = "🟢 Online";
     document.getElementById("api-status").style.color = "#22c55e";
     document.getElementById("api-latency").innerText = `${latency}ms`;
@@ -31,4 +39,5 @@ async function loadDashboard() {
     document.getElementById("api-latency").innerText = "Error";
   }
 }
+
 loadDashboard();

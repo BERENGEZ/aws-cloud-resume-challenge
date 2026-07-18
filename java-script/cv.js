@@ -1,13 +1,20 @@
-// My live production AWS API Gateway Backend Endpoint
-const apiEndpoint =
-  "https://g3dbaub1j8.execute-api.eu-north-1.amazonaws.com/counter";
+// My live production Self-Hosted Nginx Backend Endpoint
+const apiEndpoint = "/api/count";
+
 async function getVisitorCount() {
   try {
-    // Checks to make sure the endpoint string exists and isn't empty
     if (apiEndpoint) {
-      const response = await fetch(apiEndpoint);
+      // We must specify 'POST' to match the Python Flask routing rules
+      const response = await fetch(apiEndpoint, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
       const data = await response.json();
-      document.getElementById("counter").innerText = data.count;
+
+      // Updated to match the "visitor_count" key returned by my new Python API
+      document.getElementById("counter").innerText = data.visitor_count;
     } else {
       document.getElementById("counter").innerText = "0 (API pending)";
     }
