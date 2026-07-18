@@ -1,8 +1,72 @@
 <!doctype html>
-<html>
+<html lang="en">
   <head>
-    <meta http-equiv="refresh" content="0; url='/frontend/cv.html'" />
-    <title>Redirecting...</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Baraka Erenge | Cloud Engineer</title>
+    <link rel="stylesheet" href="css-files/index.css" />
   </head>
-  <body></body>
+  <body>
+    <!-- The colorful blurred background shapes -->
+    <div class="bg-shape shape-1"></div>
+    <div class="bg-shape shape-2"></div>
+    <div class="bg-shape shape-3"></div>
+
+    <!-- The Frosted Glass Window -->
+    <div class="glass-container">
+      <!-- Navigation Bar -->
+      <nav class="glass-nav">
+        <h2>Baraka.</h2>
+        <div class="nav-links">
+          <button class="nav-btn active" onclick="switchTab('welcome')">
+            Welcome
+          </button>
+          <button class="nav-btn" onclick="switchTab('architecture')">
+            Architecture
+          </button>
+          <button class="nav-btn" onclick="switchTab('telemetry')">
+            Server Health
+          </button>
+          <button class="nav-btn" onclick="switchTab('resume')">CV</button>
+        </div>
+      </nav>
+
+      <!-- Main Content Area -->
+      <main class="content-area">
+        <!-- Welcome Tab -->
+        <section id="welcome" class="tab-content active-tab">
+          <h1>This website isn't hosted in the cloud.</h1>
+          <p>
+            It is running on a bare-metal Proxmox hypervisor in my room,
+            securely tunneled to the web, and updated via automated CI/CD
+            pipelines.
+          </p>
+        </section>
+
+        <!-- Architecture Tab -->
+        <section id="architecture" class="tab-content" style="display: none">
+          <h2>Infrastructure Diagram</h2>
+          <p>
+            Details about Proxmox, Nginx, Flask, and GitHub Actions will go
+            here.
+          </p>
+        </section>
+
+        <!-- Server Health Tab -->
+        <section id="telemetry" class="tab-content" style="display: none">
+          <h2>Live Telemetry</h2>
+          <p>Status: <span id="api-status">🟡 Checking...</span></p>
+          <p>Unique Views: <span id="visitor-count">...</span></p>
+        </section>
+
+        <!-- CV Tab -->
+        <section id="resume" class="tab-content" style="display: none">
+          <h2>Curriculum Vitae</h2>
+          <p>Your resume content will go here.</p>
+        </section>
+      </main>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
 </html>
