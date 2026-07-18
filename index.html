@@ -114,9 +114,36 @@
 
         <!-- Server Health Tab -->
         <section id="telemetry" class="tab-content" style="display: none">
-          <h2>Live Telemetry</h2>
-          <p>Status: <span id="api-status">🟡 Checking...</span></p>
-          <p>Unique Views: <span id="visitor-count">...</span></p>
+          <div class="health-intro">
+            <h2>Live Server Telemetry</h2>
+            <p>
+              Real-time metrics fetched directly from the self-hosted Python
+              Flask REST API and internal SQLite database.
+            </p>
+          </div>
+
+          <div class="health-grid">
+            <!-- Status Widget -->
+            <div class="health-widget">
+              <div class="widget-icon">📡</div>
+              <div class="widget-label">API Status</div>
+              <div class="widget-value" id="api-status">🟡 Checking...</div>
+            </div>
+
+            <!-- Latency Widget -->
+            <div class="health-widget">
+              <div class="widget-icon">⚡</div>
+              <div class="widget-label">Response Time</div>
+              <div class="widget-value" id="api-latency">...</div>
+            </div>
+
+            <!-- View Count Widget -->
+            <div class="health-widget">
+              <div class="widget-icon">👀</div>
+              <div class="widget-label">Unique Views</div>
+              <div class="widget-value" id="visitor-count">...</div>
+            </div>
+          </div>
         </section>
 
         <!-- CV Tab -->

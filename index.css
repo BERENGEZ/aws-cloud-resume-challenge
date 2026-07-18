@@ -329,3 +329,69 @@ p {
   line-height: 1.6;
   margin-bottom: 0;
 }
+
+/* =========================================
+   SERVER HEALTH TAB STYLING 
+   ========================================= */
+.health-intro {
+  text-align: center;
+  margin-bottom: 50px;
+}
+
+.health-intro h2 {
+  font-size: 2.5rem;
+  color: #0f172a;
+  font-weight: 800;
+}
+
+.health-intro p {
+  color: #475569;
+  font-size: 1.1rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.health-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.health-widget {
+  background: #ffffff;
+  border-radius: 16px;
+  padding: 30px;
+  width: 250px;
+  text-align: center;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.9);
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.health-widget:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.widget-icon {
+  font-size: 2.8rem;
+  margin-bottom: 15px;
+}
+
+.widget-label {
+  color: #64748b;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  margin-bottom: 15px;
+}
+
+.widget-value {
+  font-size: 1.8rem;
+  font-weight: 800;
+  color: #0f172a;
+}
