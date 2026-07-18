@@ -134,3 +134,113 @@ p {
     transform: translateY(30px) scale(1.1);
   }
 }
+
+/* === CV / Resume Tab Styling === */
+.resume-header {
+  text-align: center;
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.subtitle {
+  color: #3b82f6; /* A nice tech blue */
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.contact-links a {
+  color: #94a3b8;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.contact-links a:hover {
+  color: #fff;
+}
+
+.resume-section {
+  margin-bottom: 30px;
+}
+
+.resume-section h3 {
+  font-size: 1.5rem;
+  color: #f8fafc;
+  margin-bottom: 20px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.resume-item {
+  background: rgba(255, 255, 255, 0.02);
+  border-left: 3px solid #3b82f6;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 0 12px 12px 0;
+}
+
+.resume-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.resume-meta h4 {
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.resume-meta span {
+  color: #94a3b8;
+  font-size: 0.9rem;
+}
+
+.company {
+  color: #cbd5e1;
+  font-style: italic;
+  margin-bottom: 15px;
+}
+
+.resume-item ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.resume-item li {
+  position: relative;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  color: #cbd5e1;
+  line-height: 1.6;
+}
+
+.resume-item li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: #3b82f6;
+}
+
+/* Skills Grid */
+.skills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.skill-tag {
+  background: rgba(59, 130, 246, 0.15);
+  border: 1px solid rgba(59, 130, 246, 0.3);
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+}
+.resume-text {
+  color: #cbd5e1;
+  line-height: 1.6;
+  font-size: 1.05rem;
+  margin-bottom: 20px;
+}
