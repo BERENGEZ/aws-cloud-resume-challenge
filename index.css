@@ -481,3 +481,48 @@ p {
   font-size: 0.95rem;
   font-weight: 600;
 }
+
+/* =========================================
+   MOBILE RESPONSIVENESS (PHONES)
+   ========================================= */
+@media (max-width: 768px) {
+  /* Stack navigation buttons instead of a single row */
+  .glass-nav {
+    flex-direction: column;
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .nav-links {
+    gap: 5px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  /* Make the glass container full height for mobile scrolling */
+  .glass-container {
+    height: auto;
+    min-height: 95vh;
+    border-radius: 0; /* Full screen look on mobile */
+  }
+
+  /* Reduce Hero padding so it fits */
+  .hero-content {
+    padding: 30px 20px;
+  }
+
+  .hero-title {
+    font-size: 2.2rem;
+  }
+
+  /* Fix CV document padding */
+  .resume-document {
+    padding: 20px;
+  }
+
+  /* Ensure grids stack properly */
+  .health-grid,
+  .arch-grid {
+    grid-template-columns: 1fr;
+  }
+}
