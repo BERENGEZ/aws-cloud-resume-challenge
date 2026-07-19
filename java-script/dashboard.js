@@ -2,7 +2,7 @@
 async function logVisit() {
   try {
     // ⚠️ Replace with your actual domain name!
-    await fetch("https://your-api-url.com/api/count", { method: "POST" });
+    await fetch("https://barakaberenge.com/api/count", { method: "POST" });
   } catch (error) {
     console.error("Failed to log visit:", error);
   }
@@ -15,7 +15,7 @@ async function updateTelemetry() {
 
   try {
     // ⚠️ IMPORTANT: Replace this URL with your actual Flask API endpoint
-    const response = await fetch("https://your-api-url.com/api/telemetry");
+    const response = await fetch("https://barakaberenge.com/api/telemetry");
     const data = await response.json();
 
     const endTime = performance.now(); // End timer for latency
