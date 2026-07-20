@@ -23,3 +23,20 @@ function switchTab(tabId) {
     clickedButton.classList.add("active");
   }
 }
+// ==========================================
+// CONFIGURATION GALLERY TOGGLE
+// ==========================================
+function toggleConfig(configId, buttonElement) {
+  const content = document.getElementById(configId);
+  const icon = buttonElement.querySelector(".toggle-icon");
+
+  if (content.style.display === "none") {
+    // Show the code block
+    content.style.display = "block";
+    icon.style.transform = "rotate(180deg)"; // Flip arrow up
+  } else {
+    // Hide the code block
+    content.style.display = "none";
+    icon.style.transform = "rotate(0deg)"; // Flip arrow down
+  }
+}

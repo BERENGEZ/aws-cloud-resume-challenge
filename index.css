@@ -471,6 +471,29 @@ p {
 }
 
 /* =========================================
+   TAB SWITCHING LOGIC & ANIMATION
+   ========================================= */
+.tab-section {
+  display: none; /* Hides all sections by default */
+  animation: fadeIn 0.4s ease-out forwards;
+}
+
+.tab-section.active-section {
+  display: block; /* Only shows the section with this class */
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================================
    MOBILE RESPONSIVENESS (THE ULTIMATE FIX)
    ========================================= */
 @media (max-width: 768px) {
@@ -565,4 +588,71 @@ p {
   .ascii-diagram {
     font-size: 0.75rem;
   }
+}
+
+/* =========================================
+   CONFIGURATION GALLERY (ARCHITECTURE TAB)
+   ========================================= */
+.config-gallery {
+  margin-top: 40px;
+}
+
+.config-item {
+  margin-bottom: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.config-btn {
+  width: 100%;
+  padding: 15px 20px;
+  background: transparent;
+  border: none;
+  color: #1f2937;
+  font-weight: 600;
+  font-size: 1rem;
+  text-align: left;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.config-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.toggle-icon {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+
+.config-content {
+  background: #1e1e1e; /* Dark terminal background */
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.config-path {
+  background: #2d2d2d;
+  color: #a3a3a3;
+  padding: 8px 20px;
+  font-family: monospace;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #444;
+}
+
+.config-content pre {
+  margin: 0;
+  padding: 20px;
+  overflow-x: auto;
+}
+
+.config-content code {
+  font-family: "Courier New", Courier, monospace;
+  color: #d4d4d4;
+  font-size: 0.9rem;
+  line-height: 1.5;
 }

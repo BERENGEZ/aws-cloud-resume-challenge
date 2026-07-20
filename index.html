@@ -33,7 +33,7 @@
 
       <!-- Main Content Area -->
       <main class="content-area">
-        <!-- Welcome Tab -->
+        <!-- Home Tab -->
         <section id="welcome" class="tab-content active-tab">
           <div class="hero-section">
             <div class="hero-content">
@@ -153,6 +153,83 @@ Proxmox VE (Hypervisor)
                 which pulls the latest commit and deploys the application
                 automatically upon push.
               </p>
+            </div>
+          </div>
+          <!-- Configuration Gallery -->
+          <div class="config-gallery">
+            <h3>Infrastructure Configurations</h3>
+            <p>
+              A transparent look at the actual configuration files powering this
+              server.
+            </p>
+
+            <!-- 1. Nginx Config -->
+            <div class="config-item">
+              <button
+                class="config-btn"
+                onclick="toggleConfig('cfg-nginx', this)"
+              >
+                <span>🚦 Nginx Reverse Proxy</span>
+                <span class="toggle-icon">▼</span>
+              </button>
+              <div id="cfg-nginx" class="config-content" style="display: none">
+                <div class="config-path">
+                  /etc/nginx/sites-available/portfolio
+                </div>
+                <pre><code>server {
+    listen 80;
+    server_name barakaberenge.com www.barakaberenge.com;
+
+    # Serve static frontend HTML/CSS/JS
+    location / {
+        root /var/www/portfolio;
+        index index.html;
+        try_files $uri $uri/ =404;
+    }
+
+    # Proxy API requests to Python Flask backend
+    location /api/ {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+}</code></pre>
+              </div>
+            </div>
+
+            <!-- 2. Gunicorn systemd Config -->
+            <div class="config-item">
+              <button
+                class="config-btn"
+                onclick="toggleConfig('cfg-gunicorn', this)"
+              >
+                <span>⚙️ Gunicorn systemd Service</span>
+                <span class="toggle-icon">▼</span>
+              </button>
+              <div
+                id="cfg-gunicorn"
+                class="config-content"
+                style="display: none"
+              >
+                <div class="config-path">
+                  /etc/systemd/system/portfolio.service
+                </div>
+                <pre><code>[Unit]
+Description=Gunicorn instance to serve Flask API
+After=network.target
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/portfolio/api
+Environment="PATH=/var/www/portfolio/api/venv/bin"
+ExecStart=/var/www/portfolio/api/venv/bin/gunicorn --workers 3 --bind 127.0.0.1:5000 app:app
+Restart=always
+
+[Install]
+WantedBy=multi-user.target</code></pre>
+              </div>
             </div>
           </div>
 
