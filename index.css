@@ -486,6 +486,23 @@ p {
    MOBILE RESPONSIVENESS (PHONES)
    ========================================= */
 @media (max-width: 768px) {
+  /* 1. UNLOCK THE SCREEN SCROLLING */
+  html,
+  body {
+    height: auto !important;
+    overflow-y: auto !important; /* Forces up/down scrolling to work */
+    overflow-x: hidden !important; /* Kills the ugly sideways scrolling */
+  }
+
+  /* 2. ALLOW THE GLASS WRAPPER TO EXPAND */
+  .glass-container {
+    height: auto !important;
+    min-height: 100vh;
+    border-radius: 0;
+    overflow-y: visible !important; /* Lets content flow naturally */
+    margin: 0; /* Removes spacing so it fits the whole screen */
+  }
+
   /* Stack navigation buttons instead of a single row */
   .glass-nav {
     flex-direction: column;
@@ -497,13 +514,6 @@ p {
     gap: 5px;
     justify-content: center;
     flex-wrap: wrap;
-  }
-
-  /* Make the glass container full height for mobile scrolling */
-  .glass-container {
-    height: auto;
-    min-height: 95vh;
-    border-radius: 0; /* Full screen look on mobile */
   }
 
   /* Reduce Hero padding so it fits */
