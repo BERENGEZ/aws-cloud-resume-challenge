@@ -656,3 +656,78 @@ p {
   font-size: 0.9rem;
   line-height: 1.5;
 }
+
+/* =========================================
+   PROJECTS TAB GALLERY
+   ========================================= */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+/* Make the whole card a clickable link */
+.project-card {
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 12px;
+  padding: 25px;
+  text-decoration: none;
+  color: inherit;
+  display: flex;
+  flex-direction: column;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+/* The Hover Effect: Card lifts up and glows */
+.project-card:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-color: rgba(255, 255, 255, 0.4);
+}
+
+.project-icon {
+  font-size: 2.5rem;
+  margin-bottom: 15px;
+}
+
+.project-info h4 {
+  margin: 0 0 10px 0;
+  font-size: 1.25rem;
+}
+
+.project-info p {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  opacity: 0.8;
+  margin: 0 0 20px 0;
+  flex-grow: 1; /* Pushes the link text to the bottom */
+}
+
+.project-link-text {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: #0369a1; /* A sleek tech-blue color */
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Styling for projects you haven't finished yet */
+.project-card.coming-soon {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.project-card.coming-soon:hover {
+  transform: none;
+  box-shadow: none;
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.project-card.coming-soon .project-link-text {
+  color: #6b7280;
+}

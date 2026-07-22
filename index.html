@@ -24,6 +24,9 @@
           <button class="nav-btn" onclick="switchTab('architecture')">
             Architecture
           </button>
+          <button class="nav-btn" onclick="switchTab('projects')">
+            Projects
+          </button>
           <button class="nav-btn" onclick="switchTab('telemetry')">
             Server Health
           </button>
@@ -194,7 +197,9 @@ Proxmox VE (Hypervisor)
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
-}</code></pre>
+}
+</code>
+</pre>
               </div>
             </div>
 
@@ -305,6 +310,45 @@ WantedBy=multi-user.target</code></pre>
             <div class="health-widget">
               <div class="widget-label">Host OS</div>
               <div class="widget-value mono" id="sys-os">...</div>
+            </div>
+          </div>
+        </section>
+        <!-- Projects Tab -->
+        <section id="projects" class="tab-content" style="display: none">
+          <div class="projects-intro">
+            <h2>Featured Projects</h2>
+            <p>
+              A collection of applications, scripts and infrastracture I have
+              built over the years.
+            </p>
+          </div>
+          <div class="projects-grid">
+            <a
+              href="https://snacks.barakaberenge.com"
+              target="_blank"
+              class="project-card"
+            >
+              <div class="project-icon">🥟</div>
+              <div class="project-info">
+                <h3>Snacks Haven</h3>
+                <p>
+                  An interactive e-commerce platform built for purchasing
+                  authentic Swahili cuisine and snacks
+                </p>
+                <span class="project-link-text">Launch App</span>
+              </div>
+            </a>
+            <!-- Project 2: Coming Soon Placeholder -->
+            <div class="project-card coming-soon">
+              <div class="project-icon">🐳</div>
+              <div class="project-info">
+                <h4>Docker Homelab</h4>
+                <p>
+                  A containerized environment hosting private cloud services
+                  like Nextcloud and Pi-hole.
+                </p>
+                <span class="project-link-text">In Development...</span>
+              </div>
             </div>
           </div>
         </section>
