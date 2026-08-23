@@ -338,21 +338,24 @@ WantedBy=multi-user.target</code></pre>
                 <span class="project-link-text">Launch App</span>
               </div>
             </a>
-            <!-- Project 2: Coming Soon Placeholder -->
-            <div class="project-card coming-soon">
-              <div class="project-icon">🐳</div>
+            <!-- Sentinel Tab -->
+            <a
+              href="https://sentinel.barakaberenge.com"
+              target="_blank"
+              class="project-card"
+            >
+              <div class="project-icon">🛡️</div>
               <div class="project-info">
-                <h4>Docker Homelab</h4>
+                <h3>Sentinel Platform</h3>
                 <p>
-                  A containerized environment hosting private cloud services
-                  like Nextcloud and Pi-hole.
+                  An enterprise telemetry &amp; fleet management dashboard providing live
+                  geolocation, battery diagnostics, and automated background heartbeat monitoring.
                 </p>
-                <span class="project-link-text">In Development...</span>
+                <span class="project-link-text">Launch App</span>
               </div>
-            </div>
+            </a>            
           </div>
         </section>
-
         <!-- CV Tab -->
         <section id="resume" class="tab-content" style="display: none">
           <div class="resume-document">
@@ -360,9 +363,7 @@ WantedBy=multi-user.target</code></pre>
               <h1 class="cv-name">Baraka Pande Berenge</h1>
               <div class="cv-title">Cloud & Infrastructure Engineer</div>
               <div class="cv-contact">
-                <a href="mailto:barakaberenge@gmail.com"
-                  >barakaberenge@gmail.com</a
-                >
+                <a href="mailto:barakaberenge@gmail.com">barakaberenge@gmail.com</a>
                 <span>|</span>
                 <a href="tel:+393881187358">+39 388 118 7358</a>
                 <span>|</span>
@@ -374,38 +375,55 @@ WantedBy=multi-user.target</code></pre>
               <div class="cv-section">
                 <h3>Profile</h3>
                 <p>
-                  Computing & IT student with hands-on experience building Linux
-                  infrastructure, automating deployments, and developing backend
-                  services. Interested in cloud platforms, systems
-                  administration, and DevOps.
+                  Cloud & Infrastructure Engineer specializing in secure, self-hosted enterprise environments, containerized deployments, and full-stack Python applications. Proven track record of designing Zero-Trust networks, automating background telemetry agents, and architecting robust CI/CD pipelines. Passionate about bridging software engineering with high-availability systems administration.
                 </p>
               </div>
 
               <div class="cv-section">
-                <h3>Featured Infrastructure Project</h3>
+                <h3>Featured Projects & Infrastructure</h3>
+                
+                <!-- Sentinel Project -->
                 <div class="cv-item">
                   <div class="cv-item-header">
-                    <div class="cv-item-title">Self-Hosted Web Platform</div>
-                    <div class="cv-item-date">2024 - Present</div>
+                    <div class="cv-item-title">Sentinel (Enterprise MDM & Telemetry Platform)</div>
+                    <div class="cv-item-date">2026 - Present</div>
                   </div>
-                  <div class="cv-item-subtitle">Proxmox / Ubuntu Server</div>
+                  <div class="cv-item-subtitle">Python / Flask / PostgreSQL / Docker</div>
                   <ul>
                     <li>
-                      Built and deployed a self-hosted web platform on a Proxmox
-                      hypervisor running an Ubuntu Server VM.
+                      Architected a full-stack Mobile Device Management (MDM) SaaS for live geolocation and hardware diagnostics tracking.
                     </li>
                     <li>
-                      Published the application through Cloudflare Tunnel to
-                      overcome ISP Carrier-Grade NAT without exposing inbound
-                      router ports.
+                      Engineered persistent background agents for Windows (PowerShell/schtasks) and Linux/macOS (Bash/Cron) for silent, automated data ingestion.
                     </li>
                     <li>
-                      Configured systemd to supervise Gunicorn and Nginx,
-                      ensuring zero-downtime automated service restarts.
+                      Designed a comprehensive "Master-Detail" Admin CRM with robust user profiling, interactive dashboards, and real-time mapping using Leaflet.js.
                     </li>
                     <li>
-                      Built a GitHub Actions pipeline utilizing self-hosted
-                      runners for reliable, automated code deployments.
+                      Deployed the entire stack utilizing Docker Compose, migrating from SQLite to a robust PostgreSQL database for enterprise scalability.
+                    </li>
+                  </ul>
+                </div>
+
+                <!-- Proxmox Project -->
+                <div class="cv-item">
+                  <div class="cv-item-header">
+                    <div class="cv-item-title">Self-Hosted Datacenter & Edge Routing</div>
+                    <div class="cv-item-date">2024 - Present</div>
+                  </div>
+                  <div class="cv-item-subtitle">Proxmox VE / Ubuntu Server / Cloudflare / Tailscale</div>
+                  <ul>
+                    <li>
+                      Built and managed a self-hosted cloud environment on a Proxmox hypervisor, utilizing Ubuntu Server VMs for isolated application hosting.
+                    </li>
+                    <li>
+                      Implemented Cloudflare Tunnels for secure public exposure of web applications, bypassing ISP Carrier-Grade NAT without opening inbound router ports.
+                    </li>
+                    <li>
+                      Orchestrated Tailscale (Zero-Trust VPN) to secure administrative access to the hypervisor and internal VM networks globally.
+                    </li>
+                    <li>
+                      Configured systemd to supervise Gunicorn and Nginx, ensuring zero-downtime automated service restarts and reliable CI/CD deployments via GitHub Actions.
                     </li>
                   </ul>
                 </div>
@@ -421,10 +439,7 @@ WantedBy=multi-user.target</code></pre>
                   <div class="cv-item-subtitle">Onda Informatica</div>
                   <ul>
                     <li>
-                      Worked with a development team on web applications,
-                      contributing to frontend and backend features while
-                      gaining practical experience with software architecture
-                      and system integration.
+                      Worked collaboratively on web applications, contributing to frontend UI and backend features while gaining practical experience in software architecture and system integration.
                     </li>
                   </ul>
                 </div>
@@ -456,32 +471,33 @@ WantedBy=multi-user.target</code></pre>
                 <h3>Technical Skills</h3>
 
                 <div class="skills-category">
-                  <h4>Infrastructure & OS</h4>
+                  <h4>Infrastructure & Networking</h4>
                   <div class="cv-skills">
-                    <span class="cv-skill-tag">Linux (Ubuntu)</span>
+                    <span class="cv-skill-tag">Linux (Ubuntu/Debian)</span>
                     <span class="cv-skill-tag">Proxmox VE</span>
-                    <span class="cv-skill-tag">Nginx</span>
-                    <span class="cv-skill-tag">systemd</span>
-                    <span class="cv-skill-tag">Cloudflare Tunnel</span>
+                    <span class="cv-skill-tag">Docker & Docker Compose</span>
+                    <span class="cv-skill-tag">Cloudflare Tunnels</span>
+                    <span class="cv-skill-tag">Tailscale (Zero-Trust VPN)</span>
                   </div>
                 </div>
 
                 <div class="skills-category">
-                  <h4>Development & Database</h4>
+                  <h4>Development & Databases</h4>
                   <div class="cv-skills">
-                    <span class="cv-skill-tag">Python</span>
-                    <span class="cv-skill-tag">Flask</span>
-                    <span class="cv-skill-tag">REST APIs</span>
-                    <span class="cv-skill-tag">SQLite</span>
+                    <span class="cv-skill-tag">Python & Flask</span>
+                    <span class="cv-skill-tag">PostgreSQL</span>
+                    <span class="cv-skill-tag">RESTful APIs</span>
+                    <span class="cv-skill-tag">PowerShell & Bash Scripting</span>
+                    <span class="cv-skill-tag">HTML/CSS & Tailwind</span>
                   </div>
                 </div>
 
                 <div class="skills-category">
-                  <h4>DevOps & Cloud</h4>
+                  <h4>DevOps & CI/CD</h4>
                   <div class="cv-skills">
-                    <span class="cv-skill-tag">Git</span>
-                    <span class="cv-skill-tag">GitHub Actions (CI/CD)</span>
-                    <span class="cv-skill-tag">Gunicorn</span>
+                    <span class="cv-skill-tag">Git & GitHub Actions</span>
+                    <span class="cv-skill-tag">Nginx & Gunicorn</span>
+                    <span class="cv-skill-tag">systemd / schtasks / cron</span>
                     <span class="cv-skill-tag">AWS Fundamentals</span>
                   </div>
                 </div>
@@ -489,10 +505,7 @@ WantedBy=multi-user.target</code></pre>
             </div>
           </div>
         </section>
-      </main>
-    </div>
-
-    <script src="java-script/app.js"></script>
+      <script src="java-script/app.js"></script>
     <script src="java-script/dashboard.js?v=2"></script>
   </body>
 </html>
