@@ -4,77 +4,125 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Baraka Berenge | Cloud Engineer</title>
-    <link rel="stylesheet" href="index.css?v=10" />
+    <link rel="stylesheet" href="trial.css" />
   </head>
   <body>
-    <!-- The colorful blurred background shapes -->
-    <div class="bg-shape shape-1"></div>
-    <div class="bg-shape shape-2"></div>
-    <div class="bg-shape shape-3"></div>
+    <!-- The Liquid Gray Animated Background -->
+    <div class="liquid-bg"></div>
 
-    <!-- The Frosted Glass Window -->
-    <div class="glass-container">
-      <!-- Navigation Bar -->
-      <nav class="glass-nav">
-        <h2>Baraka.</h2>
-        <div class="nav-links">
-          <button class="nav-btn active" onclick="switchTab('welcome')">
-            Welcome
-          </button>
-          <button class="nav-btn" onclick="switchTab('architecture')">
-            Architecture
-          </button>
-          <button class="nav-btn" onclick="switchTab('projects')">
-            Projects
-          </button>
-          <button class="nav-btn" onclick="switchTab('telemetry')">
-            Server Health
-          </button>
-          <button class="nav-btn" onclick="switchTab('resume')">CV</button>
+    <!-- The Top Telemetry HUD (Dynamic Island) -->
+    <div class="telemetry-hud">
+      <span class="pulse-dot" id="api-status-dot"></span>
+      <span class="hud-text" id="api-status">Connecting...</span>
+      <span class="hud-divider">|</span>
+      <span class="hud-text">CPU: <span id="sys-cpu">--</span></span>
+      <span class="hud-divider">|</span>
+      <span class="hud-text">RAM: <span id="sys-ram">--</span></span>
+      <span class="hud-divider">|</span>
+      <span class="hud-text">Uptime: <span id="sys-uptime">--</span></span>
+    </div>
+
+    <!-- The Floating Sidebar -->
+    <nav class="floating-sidebar">
+      <div class="brand">
+        <h2>Baraka<span>.</span></h2>
+        <p>Systems & Cloud</p>
+      </div>
+      <div class="nav-links">
+        <button class="nav-btn active" onclick="switchTab('welcome')">
+          Welcome
+        </button>
+        <button class="nav-btn" onclick="switchTab('architecture')">
+          Architecture
+        </button>
+        <button class="nav-btn" onclick="switchTab('projects')">
+          Projects
+        </button>
+        <button class="nav-btn" onclick="switchTab('resume')">CV</button>
+      </div>
+      <!-- Visitor Count docked at the bottom of the sidebar -->
+      <div class="visitor-dock">
+        <span class="dock-label">Unique Views</span>
+        <span class="dock-value" id="visitor-count">--</span>
+      </div>
+    </nav>
+
+    <!-- Main Content Area -->
+    <main class="content-area">
+      <!-- Welcome Tab (Example of Bento Box styling) -->
+      <!-- Welcome Tab -->
+      <section id="welcome" class="tab-content active-tab">
+        <div class="section-header">
+          <h2>Hello, I'm <span>Baraka.</span></h2>
+          <p>Computing & IT Student | Systems Builder</p>
         </div>
-      </nav>
 
-      <!-- Main Content Area -->
-      <main class="content-area">
-        <!-- Home Tab -->
-        <section id="welcome" class="tab-content active-tab">
-          <div class="hero-section">
-            <div class="hero-content">
-              <div class="hero-greeting">Hello, I'm Baraka 👋</div>
-              <h1 class="hero-title">
-                I design, deploy, and maintain
-                <span>Linux</span> infrastructure.
-              </h1>
-              <p class="hero-subtitle">
-                Rather than hosting this portfolio on a public cloud provider, I
-                built and maintain the infrastructure myself. The site is
-                deployed to an Ubuntu virtual machine running on a Proxmox
-                hypervisor, exposed securely through Cloudflare Tunnel, and
-                updated automatically using GitHub Actions.
-              </p>
-
-              <div class="hero-stats">
-                <div class="stat-pill">📍 Based in Italy</div>
-                <div class="stat-pill">🎓 BSc Computing & IT</div>
-                <div class="stat-pill">🐧 Systems Engineer</div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Architecture Tab -->
-        <section id="architecture" class="tab-content" style="display: none">
-          <div class="arch-intro">
-            <h2>System Architecture</h2>
-            <p>
-              A breakdown of the self-hosted environment, traffic flow, and
-              configuration decisions.
+        <div class="bento-grid">
+          <!-- Main Hero Card -->
+          <div class="bento-card span-2">
+            <h1>
+              Systems, Cloud & <br /><span class="silver-glow"
+                >Infrastructure</span
+              >
+            </h1>
+            <p style="font-size: 1.2rem; color: #d4d4d4; margin-top: 10px">
+              I don't just write code; I engineer the environments that run it.
             </p>
           </div>
 
-          <!-- NEW: ASCII Architecture Diagram -->
-          <div class="arch-diagram-container">
-            <h3>Traffic Flow</h3>
+          <!-- The "Who am I" Card -->
+          <div class="bento-card">
+            <div class="card-icon">👋</div>
+            <h3>The Journey</h3>
+            <p>
+              I am currently pursuing a BSc in Computing & IT at The Open
+              University, based in Italy. My tech journey started in full-stack
+              software development, but I quickly realized my true obsession
+              lies in the infrastructure beneath the code—cloud architecture,
+              networking, and high-availability systems.
+            </p>
+          </div>
+
+          <!-- The "What I Build" Card -->
+          <div class="bento-card">
+            <div class="card-icon">🛠️</div>
+            <h3>What I Do</h3>
+            <p>
+              I bridge the gap between development and operations. Whether I am
+              architecting enterprise hardware telemetry platforms (Sentinel),
+              configuring Zero-Trust VPNs, or writing automated CI/CD pipelines,
+              I thrive on solving complex system-level problems.
+            </p>
+          </div>
+
+          <!-- The "Proof of Work" Card (The original technical flex, but better framed) -->
+          <div class="bento-card span-2" style="border-left: 4px solid #10b981">
+            <div class="card-icon">⚡</div>
+            <h3>Proof of Work: This Portfolio</h3>
+            <p>
+              Instead of renting space on a public cloud provider, I built the
+              infrastructure hosting this site from scratch. It runs on a
+              bare-metal <strong>Proxmox hypervisor</strong> in my self-hosted
+              datacenter. It is served by an <strong>Ubuntu VM</strong>, routed
+              securely through <strong>Cloudflare Tunnels</strong> (bypassing
+              ISP NAT), and updated automatically via
+              <strong>GitHub Actions</strong>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Architecture Tab -->
+      <section id="architecture" class="tab-content" style="display: none">
+        <div class="section-header">
+          <h2>System <span>Architecture</span></h2>
+          <p>Traffic flow, configuration, and infrastructure decisions.</p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- ASCII Diagram Card -->
+          <div class="bento-card span-2">
+            <h3>Edge Routing & Traffic Flow</h3>
             <pre class="ascii-diagram">
 Internet
    │
@@ -82,7 +130,7 @@ Cloudflare DNS
    │
 Cloudflare Tunnel (Bypasses CGNAT)
    │
-Proxmox VE (Hypervisor)
+Proxmox VE (Bare-Metal Hypervisor)
    │
    └── Ubuntu Server VM
          │
@@ -93,117 +141,51 @@ Proxmox VE (Hypervisor)
                └── Flask API (Backend Logic)
                      │
                      └── SQLite (Local Metrics)
-</pre
-            >
+            </pre>
           </div>
 
-          <div class="arch-grid">
-            <div class="arch-card">
-              <div class="arch-icon">🌐</div>
-              <h4>1. Cloudflare Tunnel</h4>
-              <p>
-                My ISP uses Carrier-Grade NAT (CGNAT), which prevents inbound
-                connections. Cloudflare Tunnel provides secure public access
-                without exposing router ports or requiring port forwarding.
-              </p>
-            </div>
-
-            <div class="arch-card">
-              <div class="arch-icon">🖥️</div>
-              <h4>2. Proxmox & Ubuntu</h4>
-              <p>
-                Proxmox hosts an Ubuntu Server virtual machine with dedicated
-                CPU and memory resources to isolate the application stack from
-                the host OS.
-              </p>
-            </div>
-
-            <div class="arch-card">
-              <div class="arch-icon">🚦</div>
-              <h4>3. Nginx Web Server</h4>
-              <p>
-                Acts as a reverse proxy. It serves the static frontend assets
-                and forwards /api/ requests to the backend while handling TLS
-                termination.
-              </p>
-            </div>
-
-            <div class="arch-card">
-              <div class="arch-icon">⚙️</div>
-              <h4>4. Python Flask & Gunicorn</h4>
-              <p>
-                A Flask REST API handles application requests and serves
-                telemetry data. Gunicorn and systemd manage the service in
-                production to ensure high availability and zero manual restarts.
-              </p>
-            </div>
-
-            <div class="arch-card">
-              <div class="arch-icon">🗄️</div>
-              <h4>5. SQLite Database</h4>
-              <p>
-                Stores visitor metrics locally. The database is accessible only
-                through the internal Flask API and is never exposed directly to
-                the internet.
-              </p>
-            </div>
-
-            <div class="arch-card">
-              <div class="arch-icon">🚀</div>
-              <h4>6. CI/CD Pipeline</h4>
-              <p>
-                GitHub Actions triggers a self-hosted runner on the Ubuntu VM,
-                which pulls the latest commit and deploys the application
-                automatically upon push.
-              </p>
-            </div>
-          </div>
-          <!-- Configuration Gallery -->
-          <div class="config-gallery">
-            <h3>Infrastructure Configurations</h3>
+          <!-- Component Cards -->
+          <div class="bento-card">
+            <div class="card-icon">🌐</div>
+            <h4>Cloudflare Tunnel</h4>
             <p>
-              A transparent look at the actual configuration files powering this
-              server.
+              Bypasses ISP Carrier-Grade NAT (CGNAT). Provides secure public
+              access without exposing router ports.
             </p>
+          </div>
 
-            <!-- 1. Nginx Config -->
+          <div class="bento-card">
+            <div class="card-icon">🖥️</div>
+            <h4>Proxmox & Ubuntu</h4>
+            <p>
+              Bare-metal hypervisor hosting an isolated Ubuntu Server VM with
+              dedicated CPU/RAM allocation.
+            </p>
+          </div>
+
+          <!-- Configuration Toggle Cards -->
+          <div class="bento-card span-2 config-panel">
+            <h3>Infrastructure Configurations</h3>
+
             <div class="config-item">
               <button
                 class="config-btn"
                 onclick="toggleConfig('cfg-nginx', this)"
               >
-                <span>🚦 Nginx Reverse Proxy</span>
+                <span>🚦 Nginx Reverse Proxy (sites-available)</span>
                 <span class="toggle-icon">▼</span>
               </button>
               <div id="cfg-nginx" class="config-content" style="display: none">
-                <div class="config-path">
-                  /etc/nginx/sites-available/portfolio
-                </div>
                 <pre><code>server {
     listen 80;
-    server_name barakaberenge.com www.barakaberenge.com;
-
-    # Serve static frontend HTML/CSS/JS
-    location / {
-        root /var/www/portfolio;
-        index index.html;
-        try_files $uri $uri/ =404;
-    }
-
-    # Proxy API requests to Python Flask backend
-    location /api/ {
-        proxy_pass http://127.0.0.1:5000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-    }
-}
-</code>
-</pre>
+    server_name barakaberenge.com;
+    
+    location / { root /var/www/portfolio; index index.html; }
+    location /api/ { proxy_pass http://127.0.0.1:5000; }
+}</code></pre>
               </div>
             </div>
 
-            <!-- 2. Gunicorn systemd Config -->
             <div class="config-item">
               <button
                 class="config-btn"
@@ -217,295 +199,286 @@ Proxmox VE (Hypervisor)
                 class="config-content"
                 style="display: none"
               >
-                <div class="config-path">
-                  /etc/systemd/system/portfolio.service
-                </div>
-                <pre><code>[Unit]
-Description=Gunicorn instance to serve Flask API
-After=network.target
-
-[Service]
+                <pre><code>[Service]
 User=www-data
-Group=www-data
 WorkingDirectory=/var/www/portfolio/api
-Environment="PATH=/var/www/portfolio/api/venv/bin"
 ExecStart=/var/www/portfolio/api/venv/bin/gunicorn --workers 3 --bind 127.0.0.1:5000 app:app
-Restart=always
-
-[Install]
-WantedBy=multi-user.target</code></pre>
+Restart=always</code></pre>
               </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <!-- NEW: Challenges & Lessons Learned -->
-          <div class="arch-lessons">
-            <h3>Challenges Solved & Lessons Learned</h3>
-            <ul class="lessons-list">
-              <li>
-                <strong>Network Constraints:</strong> Overcame ISP CGNAT
-                limitations by implementing Cloudflare Tunnels for secure
-                ingress.
-              </li>
-              <li>
-                <strong>Process Supervision:</strong> Configured systemd service
-                files to manage Gunicorn, ensuring the API automatically
-                recovers from crashes and reboots.
-              </li>
-              <li>
-                <strong>Deployment Automation:</strong> Replaced manual SFTP
-                file transfers with a self-hosted GitHub Actions runner for
-                instant, reliable CI/CD.
-              </li>
-              <li>
-                <strong>Reverse Proxying:</strong> Configured Nginx routing
-                blocks to separate static file delivery from dynamic API request
-                forwarding.
-              </li>
-            </ul>
-          </div>
-        </section>
+      <!-- Projects Tab -->
+      <section id="projects" class="tab-content" style="display: none">
+        <div class="section-header">
+          <h2>Featured <span>Projects</span></h2>
+          <p>End-to-end systems I have designed and deployed.</p>
+        </div>
 
-        <!-- Server Health Tab -->
-        <section id="telemetry" class="tab-content" style="display: none">
-          <div class="health-intro">
-            <h2>Live Server Telemetry</h2>
+        <div class="bento-grid">
+          <a
+            href="https://sentinel.barakaberenge.com"
+            target="_blank"
+            class="bento-card project-card"
+          >
+            <div class="card-icon">🛡️</div>
+            <h3>Sentinel Platform</h3>
             <p>
-              Real-time system metrics fetched directly from the self-hosted
-              Ubuntu virtual machine via the Flask REST API.
+              An enterprise telemetry & fleet management dashboard providing
+              live geolocation and background heartbeat monitoring.
+            </p>
+            <span class="project-link">Launch App →</span>
+          </a>
+
+          <a
+            href="https://snackhaven.barakaberenge.com"
+            target="_blank"
+            class="bento-card project-card"
+          >
+            <div class="card-icon">🥟</div>
+            <h3>Snack Haven</h3>
+            <p>
+              An interactive e-commerce platform hosted on AWS, featuring a
+              custom telemetry pipeline routed back to my Proxmox server.
+            </p>
+            <span class="project-link">Launch App →</span>
+          </a>
+        </div>
+      </section>
+
+      <!-- CV / Resume Tab -->
+      <section id="resume" class="tab-content" style="display: none">
+        <div class="section-header">
+          <h2>Curriculum <span>Vitae</span></h2>
+          <p>My professional background, education, and core competencies.</p>
+        </div>
+
+        <div class="resume-document">
+          <header class="cv-header">
+            <h1 class="cv-name">Baraka Pande Berenge</h1>
+            <div class="cv-title">Systems & Cloud Infrastructure</div>
+            <div class="cv-contact">
+              <a href="mailto:barakaberenge@gmail.com"
+                >barakaberenge@gmail.com</a
+              >
+              <span class="cv-divider">|</span>
+              <a href="tel:+393881187358">+39 388 118 7358</a>
+              <span class="cv-divider">|</span>
+              <span>Italy</span>
+            </div>
+          </header>
+
+          <div class="cv-body">
+            <!-- Profile -->
+            <div class="cv-section">
+              <h3>Profile</h3>
+              <p class="cv-text">
+                I am an IT and Software student with a strong passion for
+                building practical, end-to-end systems. Currently pursuing a BSc
+                in Computing & IT at The Open University, I combine my academic
+                learning with hands-on project development. From managing
+                virtualized datacenters to deploying cloud-hosted applications,
+                I am a fast learner and detail-oriented, driven to bring my
+                practical programming skills and enterprise infrastructure
+                understanding to a professional environment.
+              </p>
+            </div>
+
+            <!-- Core Skills -->
+            <div class="cv-section">
+              <h3>Core Skills</h3>
+              <div class="skills-category">
+                <h4>Infrastructure & Tools</h4>
+                <div class="cv-skills">
+                  <span class="cv-skill-tag">Linux (Ubuntu)</span>
+                  <span class="cv-skill-tag">Proxmox VE</span>
+                  <span class="cv-skill-tag">Docker</span>
+                  <span class="cv-skill-tag">Nginx</span>
+                  <span class="cv-skill-tag">Cloudflare Tunnels</span>
+                  <span class="cv-skill-tag">Tailscale (Zero-Trust)</span>
+                  <span class="cv-skill-tag">CI/CD (GitHub Actions)</span>
+                  <span class="cv-skill-tag">Bash & PowerShell</span>
+                </div>
+              </div>
+              <div class="skills-category">
+                <h4>Development & Cloud</h4>
+                <div class="cv-skills">
+                  <span class="cv-skill-tag">AWS Fundamentals</span>
+                  <span class="cv-skill-tag">Python (Flask)</span>
+                  <span class="cv-skill-tag">PostgreSQL / SQLite</span>
+                  <span class="cv-skill-tag">REST APIs</span>
+                  <span class="cv-skill-tag">Dart (Flutter)</span>
+                  <span class="cv-skill-tag">HTML/CSS & Tailwind</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Technical Projects -->
+            <div class="cv-section">
+              <h3>Technical Projects & Infrastructure</h3>
+
+              <div class="cv-item">
+                <div class="cv-item-header">
+                  <div class="cv-item-title">
+                    Self-Hosted Datacenter & Edge Routing
+                  </div>
+                  <div class="cv-item-date">2024 - Present</div>
+                </div>
+                <ul>
+                  <li>
+                    Architected a Proxmox/Ubuntu virtualized environment,
+                    utilizing Cloudflare Tunnels and Tailscale VPN for secure
+                    public application routing and zero-trust remote access.
+                  </li>
+                  <li>
+                    Automated CI/CD deployments via GitHub Actions, integrating
+                    Nginx and systemd for reliable, zero-downtime service
+                    hosting.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="cv-item">
+                <div class="cv-item-header">
+                  <div class="cv-item-title">
+                    Sentinel – Enterprise Hardware Telemetry
+                  </div>
+                  <div class="cv-item-date">Personal Project</div>
+                </div>
+                <ul>
+                  <li>
+                    Built a containerized (Docker) full-stack Flask/Tailwind web
+                    dashboard with REST APIs, deployed directly onto my
+                    self-hosted server.
+                  </li>
+                  <li>
+                    Engineered silent background tracking scripts for Windows
+                    (PowerShell) and Unix (Bash), alongside a native mobile
+                    agent (Flutter).
+                  </li>
+                </ul>
+              </div>
+
+              <div class="cv-item">
+                <div class="cv-item-header">
+                  <div class="cv-item-title">
+                    Cloud Resume Challenge: Snack Haven
+                  </div>
+                  <div class="cv-item-date">Personal Project</div>
+                </div>
+                <ul>
+                  <li>
+                    Deployed an AWS-hosted web application utilizing core cloud
+                    compute and storage infrastructure.
+                  </li>
+                  <li>
+                    Embedded a custom telemetry pipeline to route live site
+                    traffic data securely back to my self-hosted backend.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Professional Experience -->
+            <div class="cv-section">
+              <h3>Professional Experience</h3>
+
+              <div class="cv-item">
+                <div class="cv-item-header">
+                  <div class="cv-item-title">IT Full Stack Programmer</div>
+                  <div class="cv-item-date">Nov 2023 – June 2024</div>
+                </div>
+                <div class="cv-item-subtitle">Onda Informatica | Italy</div>
+                <ul>
+                  <li>
+                    Collaborated with a technical team on system development
+                    projects.
+                  </li>
+                  <li>
+                    Built a practical understanding of system architecture, data
+                    flow, and software troubleshooting.
+                  </li>
+                </ul>
+              </div>
+
+              <div class="cv-item">
+                <div class="cv-item-header">
+                  <div class="cv-item-title">
+                    Reception & Administration Support
+                  </div>
+                  <div class="cv-item-date">Nov 2021 – June 2022</div>
+                </div>
+                <div class="cv-item-subtitle">UIL Pineto | Italy</div>
+                <ul>
+                  <li>
+                    Managed customer inquiries and administrative tasks in a
+                    fast-paced environment, utilizing computer systems for data
+                    organization.
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <!-- Education -->
+            <div class="cv-section">
+              <h3>Education</h3>
+
+              <div class="cv-item">
+                <div class="cv-item-header">
+                  <div class="cv-item-title">BSc (Hons) Computing & IT</div>
+                  <div class="cv-item-date">2025 - Present</div>
+                </div>
+                <div class="cv-item-subtitle">The Open University (Online)</div>
+              </div>
+
+              <div class="cv-item">
+                <div class="cv-item-header">
+                  <div class="cv-item-title">
+                    Advanced Diploma in Programming
+                  </div>
+                  <div class="cv-item-date">2022 - 2024</div>
+                </div>
+                <div class="cv-item-subtitle">Italy | Final Grade: 95%</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <!-- Global Footer -->
+      <footer class="site-footer">
+        <div class="footer-content">
+          <div class="footer-text">
+            <p>&copy; 2026 Baraka Pande Berenge.</p>
+            <p class="footer-subtext">
+              Designed, engineered, and self-hosted from scratch.
             </p>
           </div>
-
-          <div class="health-grid">
-            <div class="health-widget">
-              <div class="widget-label">API Status</div>
-              <div class="widget-value mono" id="api-status">
-                🟡 Checking...
-              </div>
-            </div>
-            <div class="health-widget">
-              <div class="widget-label">Response Time</div>
-              <div class="widget-value mono" id="api-latency">...</div>
-            </div>
-            <div class="health-widget">
-              <div class="widget-label">System Uptime</div>
-              <div class="widget-value mono" id="sys-uptime">...</div>
-            </div>
-            <div class="health-widget">
-              <div class="widget-label">CPU Usage</div>
-              <div class="widget-value mono" id="sys-cpu">...</div>
-            </div>
-            <div class="health-widget">
-              <div class="widget-label">RAM Usage</div>
-              <div class="widget-value mono" id="sys-ram">...</div>
-            </div>
-            <div class="health-widget">
-              <div class="widget-label">Unique Views</div>
-              <div class="widget-value mono" id="visitor-count">...</div>
-            </div>
-            <div class="health-widget">
-              <div class="widget-label">OS Kernel</div>
-              <div class="widget-value mono" id="sys-kernel">...</div>
-            </div>
-            <div class="health-widget">
-              <div class="widget-label">Host OS</div>
-              <div class="widget-value mono" id="sys-os">...</div>
-            </div>
-          </div>
-        </section>
-        <!-- Projects Tab -->
-        <section id="projects" class="tab-content" style="display: none">
-          <div class="projects-intro">
-            <h2>Featured Projects</h2>
-            <p>
-              A collection of applications, scripts and infrastracture I have
-              built over the years.
-            </p>
-          </div>
-          <div class="projects-grid">
-            <a
-              href="https://snackhaven.barakaberenge.com"
-              target="_blank"
-              class="project-card"
+          <div class="footer-links">
+            <a href="mailto:barakaberenge@gmail.com" class="footer-link"
+              >Email</a
             >
-              <div class="project-icon">🥟</div>
-              <div class="project-info">
-                <h3>Snacks Haven</h3>
-                <p>
-                  An interactive e-commerce platform built for purchasing
-                  authentic Swahili cuisine and snacks
-                </p>
-                <span class="project-link-text">Launch App</span>
-              </div>
-            </a>
-            <!-- Sentinel Tab -->
+            <span class="footer-divider">/</span>
             <a
-              href="https://sentinel.barakaberenge.com"
+              href="https://github.com/BERENGEZ"
               target="_blank"
-              class="project-card"
+              class="footer-link"
+              >GitHub</a
             >
-              <div class="project-icon">🛡️</div>
-              <div class="project-info">
-                <h3>Sentinel Platform</h3>
-                <p>
-                  An enterprise telemetry &amp; fleet management dashboard providing live
-                  geolocation, battery diagnostics, and automated background heartbeat monitoring.
-                </p>
-                <span class="project-link-text">Launch App</span>
-              </div>
-            </a>            
+            <span class="footer-divider">/</span>
+            <a
+              href="https://www.linkedin.com/in/baraka-pande-berenge-3529ba259/"
+              target="_blank"
+              class="footer-link"
+              >LinkedIn</a
+            >
           </div>
-        </section>
-        <!-- CV Tab -->
-        <section id="resume" class="tab-content" style="display: none">
-          <div class="resume-document">
-            <header class="cv-header">
-              <h1 class="cv-name">Baraka Pande Berenge</h1>
-              <div class="cv-title">Cloud & Infrastructure Engineer</div>
-              <div class="cv-contact">
-                <a href="mailto:barakaberenge@gmail.com">barakaberenge@gmail.com</a>
-                <span>|</span>
-                <a href="tel:+393881187358">+39 388 118 7358</a>
-                <span>|</span>
-                <span>Italy</span>
-              </div>
-            </header>
-
-            <div class="cv-body">
-              <div class="cv-section">
-                <h3>Profile</h3>
-                <p>
-                  Cloud & Infrastructure Engineer specializing in secure, self-hosted enterprise environments, containerized deployments, and full-stack Python applications. Proven track record of designing Zero-Trust networks, automating background telemetry agents, and architecting robust CI/CD pipelines. Passionate about bridging software engineering with high-availability systems administration.
-                </p>
-              </div>
-
-              <div class="cv-section">
-                <h3>Featured Projects & Infrastructure</h3>
-                
-                <!-- Sentinel Project -->
-                <div class="cv-item">
-                  <div class="cv-item-header">
-                    <div class="cv-item-title">Sentinel (Enterprise MDM & Telemetry Platform)</div>
-                    <div class="cv-item-date">2026 - Present</div>
-                  </div>
-                  <div class="cv-item-subtitle">Python / Flask / PostgreSQL / Docker</div>
-                  <ul>
-                    <li>
-                      Architected a full-stack Mobile Device Management (MDM) SaaS for live geolocation and hardware diagnostics tracking.
-                    </li>
-                    <li>
-                      Engineered persistent background agents for Windows (PowerShell/schtasks) and Linux/macOS (Bash/Cron) for silent, automated data ingestion.
-                    </li>
-                    <li>
-                      Designed a comprehensive "Master-Detail" Admin CRM with robust user profiling, interactive dashboards, and real-time mapping using Leaflet.js.
-                    </li>
-                    <li>
-                      Deployed the entire stack utilizing Docker Compose, migrating from SQLite to a robust PostgreSQL database for enterprise scalability.
-                    </li>
-                  </ul>
-                </div>
-
-                <!-- Proxmox Project -->
-                <div class="cv-item">
-                  <div class="cv-item-header">
-                    <div class="cv-item-title">Self-Hosted Datacenter & Edge Routing</div>
-                    <div class="cv-item-date">2024 - Present</div>
-                  </div>
-                  <div class="cv-item-subtitle">Proxmox VE / Ubuntu Server / Cloudflare / Tailscale</div>
-                  <ul>
-                    <li>
-                      Built and managed a self-hosted cloud environment on a Proxmox hypervisor, utilizing Ubuntu Server VMs for isolated application hosting.
-                    </li>
-                    <li>
-                      Implemented Cloudflare Tunnels for secure public exposure of web applications, bypassing ISP Carrier-Grade NAT without opening inbound router ports.
-                    </li>
-                    <li>
-                      Orchestrated Tailscale (Zero-Trust VPN) to secure administrative access to the hypervisor and internal VM networks globally.
-                    </li>
-                    <li>
-                      Configured systemd to supervise Gunicorn and Nginx, ensuring zero-downtime automated service restarts and reliable CI/CD deployments via GitHub Actions.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="cv-section">
-                <h3>Experience</h3>
-                <div class="cv-item">
-                  <div class="cv-item-header">
-                    <div class="cv-item-title">IT Full Stack Programmer</div>
-                    <div class="cv-item-date">Nov 2023 - June 2024</div>
-                  </div>
-                  <div class="cv-item-subtitle">Onda Informatica</div>
-                  <ul>
-                    <li>
-                      Worked collaboratively on web applications, contributing to frontend UI and backend features while gaining practical experience in software architecture and system integration.
-                    </li>
-                  </ul>
-                </div>
-              </div>
-
-              <div class="cv-section">
-                <h3>Education</h3>
-                <div class="cv-item">
-                  <div class="cv-item-header">
-                    <div class="cv-item-title">BSc (Hons) Computing & IT</div>
-                    <div class="cv-item-date">2025 - Present</div>
-                  </div>
-                  <div class="cv-item-subtitle">
-                    The Open University (Online)
-                  </div>
-                </div>
-                <div class="cv-item">
-                  <div class="cv-item-header">
-                    <div class="cv-item-title">
-                      Advanced Diploma in Programming & Software Development
-                    </div>
-                    <div class="cv-item-date">2022 - 2024</div>
-                  </div>
-                  <div class="cv-item-subtitle">Italy (Final Grade: 95%)</div>
-                </div>
-              </div>
-
-              <div class="cv-section">
-                <h3>Technical Skills</h3>
-
-                <div class="skills-category">
-                  <h4>Infrastructure & Networking</h4>
-                  <div class="cv-skills">
-                    <span class="cv-skill-tag">Linux (Ubuntu/Debian)</span>
-                    <span class="cv-skill-tag">Proxmox VE</span>
-                    <span class="cv-skill-tag">Docker & Docker Compose</span>
-                    <span class="cv-skill-tag">Cloudflare Tunnels</span>
-                    <span class="cv-skill-tag">Tailscale (Zero-Trust VPN)</span>
-                  </div>
-                </div>
-
-                <div class="skills-category">
-                  <h4>Development & Databases</h4>
-                  <div class="cv-skills">
-                    <span class="cv-skill-tag">Python & Flask</span>
-                    <span class="cv-skill-tag">PostgreSQL</span>
-                    <span class="cv-skill-tag">RESTful APIs</span>
-                    <span class="cv-skill-tag">PowerShell & Bash Scripting</span>
-                    <span class="cv-skill-tag">HTML/CSS & Tailwind</span>
-                  </div>
-                </div>
-
-                <div class="skills-category">
-                  <h4>DevOps & CI/CD</h4>
-                  <div class="cv-skills">
-                    <span class="cv-skill-tag">Git & GitHub Actions</span>
-                    <span class="cv-skill-tag">Nginx & Gunicorn</span>
-                    <span class="cv-skill-tag">systemd / schtasks / cron</span>
-                    <span class="cv-skill-tag">AWS Fundamentals</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-      <script src="java-script/app.js"></script>
-    <script src="java-script/dashboard.js?v=2"></script>
+        </div>
+      </footer>
+    </main>
+    <!-- This is your existing closing main tag -->
+    <script src="app.js"></script>
+    <script src="dashboard.js"></script>
   </body>
 </html>
