@@ -10,31 +10,34 @@
     sans-serif;
 }
 
-body {
-  background-color: #0a0a0a;
-  color: #e5e5e5;
-  min-height: 100vh;
-  overflow-x: hidden; /* Allows natural vertical scrolling, prevents horizontal bugs */
+html {
+  scroll-behavior: smooth; /* Glides beautifully when clicking nav links */
 }
 
-/* Custom Smooth Scrollbar */
+body {
+  background-color: #0b0c10; /* Deep charcoal, professional */
+  color: #c5c6c7;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Elegant Scrollbar */
 ::-webkit-scrollbar {
-  width: 10px;
+  width: 8px;
 }
 ::-webkit-scrollbar-track {
-  background: #0a0a0a;
+  background: #0b0c10;
 }
 ::-webkit-scrollbar-thumb {
-  background: #333333;
-  border-radius: 10px;
-  border: 2px solid #0a0a0a;
+  background: #2b2c30;
+  border-radius: 4px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: #555555;
+  background: #4a4b50;
 }
 
 /* =========================================
-   Liquid Gray Background 
+   Liquid Crystal Background 
    ========================================= */
 .liquid-bg {
   position: fixed;
@@ -43,11 +46,10 @@ body {
   width: 100vw;
   height: 100vh;
   z-index: -1;
-  background: linear-gradient(120deg, #0f1115, #1c1e24, #121418);
+  background: linear-gradient(135deg, #090a0d, #14161c, #0d0e12);
   background-size: 200% 200%;
-  animation: liquidMove 15s ease infinite alternate;
+  animation: liquidMove 15s ease-in-out infinite alternate;
 }
-
 @keyframes liquidMove {
   0% {
     background-position: 0% 50%;
@@ -58,250 +60,318 @@ body {
 }
 
 /* =========================================
-   Top Navbar (Glassmorphism)
+   Top Navbar (Frosted Grey Glass)
    ========================================= */
 .top-nav {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 70px;
-  background: rgba(10, 10, 12, 0.7);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(11, 12, 16, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 50px;
+  padding: 15px 40px;
   z-index: 1000;
 }
 
 .brand h2 {
-  font-size: 1.5rem;
+  font-size: 1.4rem;
   color: #ffffff;
   letter-spacing: -0.5px;
 }
-
 .brand h2 span {
-  color: #737373;
+  color: #8892b0;
 }
 
 .nav-links {
   display: flex;
-  gap: 10px;
+  gap: 25px;
 }
-
-.nav-btn {
-  background: transparent;
-  border: 1px solid transparent;
-  color: #a3a3a3;
-  padding: 8px 16px;
-  border-radius: 8px;
+.nav-link {
+  color: #8892b0;
+  text-decoration: none;
   font-size: 0.95rem;
   font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
+  transition: color 0.3s;
 }
-
-.nav-btn:hover {
+.nav-link:hover {
   color: #ffffff;
-  background: rgba(255, 255, 255, 0.05);
 }
 
-.nav-btn.active {
-  color: #ffffff;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid rgba(255, 255, 255, 0.15);
-}
-
-/* =========================================
-   Side Telemetry Widget (Right Side)
-   ========================================= */
-.side-telemetry {
-  position: fixed;
-  top: 100px;
-  right: 30px;
-  width: 220px;
-  background: rgba(20, 22, 28, 0.6);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 12px;
-  padding: 15px;
-  z-index: 900;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-}
-
-.telemetry-header {
+/* Telemetry HUD - Silver Pulse */
+.telemetry-hud {
   display: flex;
   align-items: center;
   gap: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  padding-bottom: 10px;
-  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.85rem;
+  color: #8892b0;
 }
-
 .pulse-dot {
   width: 8px;
   height: 8px;
-  background-color: #10b981;
+  background-color: #ccd6f6; /* Crisp Ice White/Silver */
   border-radius: 50%;
-  box-shadow: 0 0 8px #10b981;
+  box-shadow: 0 0 8px #ccd6f6;
   animation: pulse 2s infinite;
 }
-
 @keyframes pulse {
   0% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0.7);
+    box-shadow: 0 0 0 0 rgba(204, 214, 246, 0.5);
   }
   70% {
-    box-shadow: 0 0 0 6px rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 5px rgba(204, 214, 246, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    box-shadow: 0 0 0 0 rgba(204, 214, 246, 0);
   }
 }
-
-.telemetry-data .t-row {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 8px;
-  font-size: 0.8rem;
-  color: #a3a3a3;
+.hud-divider {
+  color: #333;
 }
-
-.telemetry-data .mono {
-  font-family: "JetBrains Mono", monospace;
+.hud-text span.mono {
   color: #ffffff;
   font-weight: bold;
 }
 
-.t-divider {
-  height: 1px;
-  background: rgba(255, 255, 255, 0.1);
-  margin: 10px 0;
+/* =========================================
+   Main Content Layout
+   ========================================= */
+.content-area {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 120px 30px 50px 30px;
+}
+
+.scroll-section {
+  padding-top: 60px; /* Offset for fixed navbar when scrolling */
+  margin-bottom: 80px;
+}
+
+.hero-header {
+  margin-bottom: 50px;
+}
+.mega-title {
+  font-size: 4rem;
+  line-height: 1.1;
+  font-weight: 700;
+  color: #ffffff;
+  letter-spacing: -1px;
+  margin-bottom: 20px;
+}
+.text-crystal {
+  color: #8892b0;
+}
+.hero-desc {
+  font-size: 1.2rem;
+  color: #a8b2d1;
+  line-height: 1.6;
+  max-width: 700px;
+}
+
+.section-heading {
+  margin-bottom: 30px;
+}
+.section-heading h2 {
+  font-size: 2rem;
+  color: #ffffff;
+  margin-bottom: 8px;
+}
+.section-heading h2 span {
+  color: #8892b0;
+}
+.section-heading p {
+  color: #a8b2d1;
+  font-size: 1rem;
 }
 
 /* =========================================
-   Main Content Area
+   Bento Grid & Cards (Pro Grey Aesthetic)
    ========================================= */
-.content-area {
-  padding: 120px 280px 50px 50px; /* Right padding ensures content isn't under the side widget */
-  max-width: 1400px;
-  margin: 0 auto;
-}
-
-.section-header {
-  margin-bottom: 30px;
-}
-.section-header h2 {
-  font-size: 2.5rem;
-  color: #d4d4d4;
-  margin-bottom: 5px;
-}
-.section-header h2 span {
-  color: #ffffff;
-  text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
-}
-.section-header p {
-  color: #a3a3a3;
-  font-size: 1.1rem;
-}
-
-/* Bento Grid */
 .bento-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  grid-template-columns: repeat(3, 1fr);
   gap: 20px;
 }
 
 .bento-card {
-  background: rgba(20, 22, 28, 0.5);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(22, 24, 29, 0.6); /* Translucent dark grey */
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
   border-radius: 16px;
-  padding: 30px;
+  padding: 40px;
   transition:
-    transform 0.3s ease,
-    border-color 0.3s ease;
+    transform 0.3s,
+    border-color 0.3s,
+    background 0.3s;
+}
+.bento-card:hover {
+  background: rgba(26, 28, 35, 0.8);
+  border-color: rgba(255, 255, 255, 0.1);
 }
 
-.bento-card.span-2 {
-  grid-column: 1 / -1;
+.span-1 {
+  grid-column: span 1;
 }
-.card-icon {
-  font-size: 2rem;
-  margin-bottom: 15px;
+.span-2 {
+  grid-column: span 2;
 }
-.bento-card h3,
-.bento-card h4 {
-  color: #ffffff;
-  margin-bottom: 10px;
+.span-3 {
+  grid-column: span 3;
+}
+
+.card-title {
   font-size: 1.2rem;
+  color: #ffffff;
+  margin-bottom: 15px;
+  font-weight: 600;
 }
-.bento-card p {
-  color: #a3a3a3;
+.card-text {
+  color: #8892b0;
   font-size: 0.95rem;
-  line-height: 1.6;
+  line-height: 1.7;
+  margin-bottom: 20px;
+}
+.crystal-accent {
+  color: #ccd6f6;
+  font-weight: 500;
 }
 
-/* Resume Timeline & Skills in Welcome Tab */
-.timeline-item {
-  margin-bottom: 10px;
-}
-.timeline-item h4 {
-  font-size: 1rem;
-  margin-bottom: 2px;
-}
-.timeline-date {
-  font-size: 0.85rem;
-  color: #10b981;
-  font-family: monospace;
-  display: block;
-  margin-bottom: 5px;
-}
-.cv-skills {
+/* Skills Tags */
+.skills-wrapper {
   display: flex;
   flex-wrap: wrap;
   gap: 8px;
 }
-.cv-skill-tag {
-  background: rgba(255, 255, 255, 0.05);
-  color: #d4d4d4;
+.skill-tag {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: #a8b2d1;
   padding: 6px 12px;
   border-radius: 6px;
   font-size: 0.85rem;
-  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-/* ASCII & Configs */
-.ascii-diagram {
-  color: #10b981;
-  font-family: monospace;
+/* Stats Rows */
+.stat-row {
+  display: flex;
+  gap: 30px;
+  margin-top: 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  padding-top: 20px;
+}
+.stat-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.stat-label {
+  font-size: 0.75rem;
+  color: #666;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.stat-value {
+  font-size: 0.95rem;
+  color: #ccd6f6;
+  font-weight: 600;
+}
+
+/* Timeline (Experience / Education) */
+.timeline-entry {
+  display: flex;
+  flex-direction: column;
+}
+.timeline-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 5px;
+  flex-wrap: wrap;
+}
+.timeline-header h4,
+.timeline-entry h4 {
+  color: #ffffff;
+  font-size: 1.05rem;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+.timeline-date {
+  font-family: "JetBrains Mono", monospace;
   font-size: 0.85rem;
-  overflow-x: auto;
+  color: #8892b0;
+}
+.timeline-text {
+  color: #8892b0;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.timeline-divider {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05);
+  margin: 20px 0;
+}
+
+/* Project Layouts */
+.project-layout {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.project-tech {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 0.8rem;
+  color: #666;
+  margin-top: 10px;
+}
+.project-link {
+  display: inline-block;
+  margin-top: 20px;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: opacity 0.3s;
+}
+.project-link:hover {
+  opacity: 0.7;
+}
+
+/* Config Cards & ASCII */
+.live-stats-box {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 .config-item {
-  margin-top: 15px;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 8px;
   overflow: hidden;
 }
 .config-btn {
   width: 100%;
-  background: rgba(0, 0, 0, 0.3);
-  color: #d4d4d4;
+  background: rgba(0, 0, 0, 0.2);
+  color: #ccd6f6;
   border: none;
   padding: 15px;
   display: flex;
   justify-content: space-between;
   cursor: pointer;
   font-family: monospace;
+  font-size: 0.9rem;
 }
 .config-content pre {
-  background: #000;
-  color: #a3a3a3;
+  background: #07080a;
+  color: #a8b2d1;
   padding: 15px;
   font-family: monospace;
   font-size: 0.85rem;
@@ -309,32 +379,13 @@ body {
   overflow-x: auto;
 }
 
-/* Projects */
-.project-card {
-  text-decoration: none;
-  display: flex;
-  flex-direction: column;
-}
-.project-card:hover {
-  transform: translateY(-5px);
-  background: rgba(30, 32, 40, 0.8);
-  border-color: rgba(255, 255, 255, 0.2);
-}
-.project-link {
-  margin-top: auto;
-  padding-top: 20px;
-  color: #ffffff;
-  font-weight: 600;
-  font-size: 0.9rem;
-}
-
-/* Global Footer */
+/* =========================================
+   Global Footer
+   ========================================= */
 .site-footer {
-  margin-top: 80px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
   padding-top: 30px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-}
-.footer-content {
+  margin-top: 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -342,13 +393,8 @@ body {
   gap: 20px;
 }
 .footer-text p {
-  color: #a3a3a3;
-  font-size: 0.9rem;
-  margin-bottom: 2px;
-}
-.footer-text .footer-subtext {
-  color: #737373;
-  font-size: 0.8rem;
+  color: #666;
+  font-size: 0.85rem;
 }
 .footer-links {
   display: flex;
@@ -356,7 +402,7 @@ body {
   align-items: center;
 }
 .footer-link {
-  color: #a3a3a3;
+  color: #8892b0;
   text-decoration: none;
   font-size: 0.9rem;
   transition: color 0.3s;
@@ -369,25 +415,39 @@ body {
 }
 
 /* =========================================
-   MOBILE RESPONSIVENESS
+   Responsive Design (Mobile Safe)
    ========================================= */
 @media (max-width: 900px) {
+  .bento-grid {
+    grid-template-columns: 1fr;
+  }
+  .span-2 {
+    grid-column: span 1;
+  }
+  .mega-title {
+    font-size: 2.8rem;
+  }
+
   .top-nav {
-    padding: 0 20px;
+    flex-direction: column;
+    padding: 15px;
+    gap: 15px;
+    position: static;
+  }
+  .nav-links {
+    flex-wrap: wrap;
+    justify-content: center;
   }
 
-  /* Push content below the nav, and remove the huge right margin because the side widget will move */
   .content-area {
-    padding: 100px 20px 40px 20px;
+    padding-top: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
   }
-
-  /* Telemetry widget moves from fixed side to standard block inside content */
-  .side-telemetry {
-    position: relative;
-    top: 0;
-    right: 0;
-    width: 100%;
-    margin-bottom: 30px;
-    margin-top: 20px;
+  .scroll-section {
+    padding-top: 0;
+  }
+  .timeline-header {
+    flex-direction: column;
   }
 }

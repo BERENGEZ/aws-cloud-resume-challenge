@@ -3,238 +3,316 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Baraka Berenge | Cloud Engineer</title>
+    <title>Baraka Berenge | Cloud & Systems Engineer</title>
     <link rel="stylesheet" href="index.css" />
   </head>
   <body>
-    <!-- The Liquid Gray Animated Background -->
+    <!-- Liquid Crystal Background -->
     <div class="liquid-bg"></div>
 
-    <!-- 1. TOP NAVBAR -->
+    <!-- TOP NAVBAR (Frosted Glass, Scrolling Links) -->
     <nav class="top-nav">
       <div class="brand">
         <h2>Baraka<span>.</span></h2>
       </div>
+
       <div class="nav-links">
-        <button class="nav-btn active" onclick="switchTab('welcome')">
-          Home & About
-        </button>
-        <button class="nav-btn" onclick="switchTab('architecture')">
-          Architecture
-        </button>
-        <button class="nav-btn" onclick="switchTab('projects')">
-          Projects
-        </button>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#projects" class="nav-link">Projects</a>
+        <a href="#experience" class="nav-link">Experience</a>
+        <a href="#architecture" class="nav-link">Architecture</a>
+      </div>
+
+      <!-- Live Telemetry HUD (Silver Pulse) -->
+      <div class="telemetry-hud">
+        <span class="pulse-dot" id="api-status-dot"></span>
+        <span class="hud-text"
+          >CPU: <span id="sys-cpu" class="mono">--</span></span
+        >
+        <span class="hud-divider">|</span>
+        <span class="hud-text"
+          >RAM: <span id="sys-ram" class="mono">--</span></span
+        >
+        <span class="hud-divider">|</span>
+        <span class="hud-text"
+          >OS: <span id="sys-os" class="mono">--</span></span
+        >
+        <span class="hud-divider">|</span>
+        <span class="hud-text"
+          >CPU Usage: <span id="sys-cpu" class="mono">--</span></span
+        >
+        <span class="hud-divider">|</span>
+        <span class="hud-text"
+          >Response Time: <span id="api-latency" class="mono">--</span></span
+        >
       </div>
     </nav>
 
-    <!-- 2. SIDE TELEMETRY WIDGET -->
-    <div class="side-telemetry">
-      <div class="telemetry-header">
-        <span class="pulse-dot" id="api-status-dot"></span>
-        <span id="api-status" style="color: #ffffff; font-weight: bold"
-          >Connecting...</span
-        >
-      </div>
-      <div class="telemetry-data">
-        <div class="t-row">
-          <span>CPU</span> <span id="sys-cpu" class="mono">--</span>
-        </div>
-        <div class="t-row">
-          <span>RAM</span> <span id="sys-ram" class="mono">--</span>
-        </div>
-        <div class="t-row">
-          <span>Uptime</span> <span id="sys-uptime" class="mono">--</span>
-        </div>
-        <div class="t-divider"></div>
-        <div class="t-row">
-          <span>Views</span> <span id="visitor-count" class="mono">--</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- 3. MAIN CONTENT AREA -->
+    <!-- MAIN SCROLLING CONTENT -->
     <main class="content-area">
-      <!-- ================= WELCOME / INTERACTIVE CV TAB ================= -->
-      <section id="welcome" class="tab-content active-tab">
-        <div class="section-header">
-          <h2>Systems, Cloud & <span>Infrastructure</span></h2>
-          <p>
-            I don't just write code; I engineer the environments that run it.
+      <!-- ================= 1. ABOUT & HERO SECTION ================= -->
+      <section id="about" class="scroll-section">
+        <div class="hero-header">
+          <h1 class="mega-title">
+            Systems Cloud & Infrastructure<br /><span class="text-crystal"
+              >Engineer</span
+            >
+          </h1>
+          <p class="hero-desc">
+            I am Baraka Berenge. I design, deploy, and maintain secure,
+            self-hosted enterprise environments, containerized deployments, and
+            full-stack systems.
           </p>
         </div>
 
         <div class="bento-grid">
-          <!-- Proof of Work (Hero) -->
-          <div class="bento-card span-2" style="border-top: 3px solid #10b981">
-            <div class="card-icon">⚡</div>
-            <h3>Proof of Work: This Portfolio</h3>
-            <p>
-              Instead of renting space on a public cloud provider, I built the
-              infrastructure hosting this site from scratch. It runs on a
-              bare-metal <strong>Proxmox hypervisor</strong> in my self-hosted
-              datacenter. It is served by an <strong>Ubuntu VM</strong>, routed
-              securely through <strong>Cloudflare Tunnels</strong> (bypassing
-              ISP NAT), and updated automatically via
-              <strong>GitHub Actions</strong>.
+          <!-- CV Profile -->
+          <div class="bento-card span-2">
+            <h3 class="card-title">Profile & Engineering Philosophy</h3>
+            <p class="card-text">
+              I am an IT student currently pursuing a BSc (Honours) in Computing
+              & IT: Communications & Software at The Open University. I have a
+              strong interest in IT systems, cloud technologies, and enterprise
+              environments. I combine my academic learning with hands-on project
+              development from architecting full-stack telemetry platforms to
+              deploying cloud-hosted applications. I am highly driven and
+              motivated to gain practical experience in IT support, systems
+              engineering, or audit-related roles.
             </p>
-          </div>
-
-          <!-- The Journey -->
-          <div class="bento-card">
-            <div class="card-icon">👋</div>
-            <h3>The Journey</h3>
-            <p>
-              Currently pursuing a BSc in Computing & IT at The Open University.
-              My tech journey started in full-stack software development, but I
-              quickly realized my true obsession lies in the infrastructure
-              beneath the code—cloud architecture, networking, and
-              high-availability systems.
-            </p>
-          </div>
-
-          <!-- Core Skills (Replaces CV Skills) -->
-          <div class="bento-card">
-            <div class="card-icon">🛠️</div>
-            <h3>Core Arsenal</h3>
-            <div class="skills-category">
-              <div class="cv-skills">
-                <span class="cv-skill-tag">Linux (Ubuntu)</span>
-                <span class="cv-skill-tag">Proxmox VE</span>
-                <span class="cv-skill-tag">Docker</span>
-                <span class="cv-skill-tag">Cloudflare Tunnels</span>
-                <span class="cv-skill-tag">Tailscale VPN</span>
-                <span class="cv-skill-tag">Python (Flask)</span>
-                <span class="cv-skill-tag">AWS Fundamentals</span>
-                <span class="cv-skill-tag">GitHub Actions</span>
+            <div class="stat-row">
+              <div class="stat-item">
+                <span class="stat-label">Based in</span>
+                <span class="stat-value">Italy</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Education</span>
+                <span class="stat-value"
+                  >BSc Computing & IT: Communications & Software</span
+                >
               </div>
             </div>
           </div>
 
-          <!-- Experience -->
-          <div class="bento-card">
-            <div class="card-icon">💼</div>
-            <h3>Experience</h3>
-            <div class="timeline-item">
-              <h4>IT Full Stack Programmer</h4>
-              <span class="timeline-date"
-                >Nov 2023 – June 2024 | Onda Informatica</span
-              >
-              <p>
-                Collaborated on system development, architecture, data flow, and
-                software troubleshooting.
-              </p>
-            </div>
-            <div class="timeline-item" style="margin-top: 15px">
-              <h4>Administration Support</h4>
-              <span class="timeline-date"
-                >Nov 2021 – June 2022 | UIL Pineto</span
-              >
-              <p>
-                Managed systems data organization and fast-paced client
-                inquiries.
-              </p>
-            </div>
-          </div>
-
-          <!-- Education -->
-          <div class="bento-card">
-            <div class="card-icon">🎓</div>
-            <h3>Education</h3>
-            <div class="timeline-item">
-              <h4>BSc (Hons) Computing & IT</h4>
-              <span class="timeline-date"
-                >2025 - Present | The Open University</span
-              >
-            </div>
-            <div class="timeline-item" style="margin-top: 15px">
-              <h4>Adv. Diploma in Programming</h4>
-              <span class="timeline-date">2022 - 2024 | Final Grade: 95%</span>
+          <!-- Core Skills Array -->
+          <div class="bento-card span-1">
+            <h3 class="card-title">Core Competencies</h3>
+            <div class="skills-wrapper">
+              <span class="skill-tag">Linux (Ubuntu/Debian)</span>
+              <span class="skill-tag">Proxmox VE</span>
+              <span class="skill-tag">Docker & Compose</span>
+              <span class="skill-tag">Tailscale (Zero-Trust)</span>
+              <span class="skill-tag">Cloudflare Tunnels</span>
+              <span class="skill-tag">AWS Fundamentals</span>
+              <span class="skill-tag">GitHub Actions (CI/CD)</span>
+              <span class="skill-tag">Python (Flask) & REST</span>
+              <span class="skill-tag">Nginx Reverse Proxy</span>
+              <span class="skill-tag">PostgreSQL & SQLite</span>
+              <span class="skill-tag">Terraform</span>
+              <span class="skill-tag">Javascript</span>
             </div>
           </div>
         </div>
       </section>
 
-      <!-- ================= ARCHITECTURE TAB ================= -->
-      <section id="architecture" class="tab-content" style="display: none">
-        <div class="section-header">
-          <h2>System <span>Architecture</span></h2>
-          <p>Traffic flow, configuration, and infrastructure decisions.</p>
+      <!-- ================= 2. PROJECTS SECTION ================= -->
+      <section id="projects" class="scroll-section">
+        <div class="section-heading">
+          <h2>Featured <span>Projects</span></h2>
+          <p>End-to-end systems engineered from the ground up.</p>
         </div>
 
         <div class="bento-grid">
-          <!-- ASCII Diagram Card -->
+          <!-- Sentinel -->
+          <div class="bento-card span-2 project-layout">
+            <div class="project-content">
+              <div class="card-icon">🛡️</div>
+              <h3 class="card-title">Sentinel Platform</h3>
+              <p class="card-text">
+                An enterprise telemetry & device management platform with a
+                full-stack dashboard for live geolocation tracking, device
+                health monitoring, and system analytics.
+              </p>
+              <div class="project-tech">
+                Python • Flask • PostgreSQL • Docker
+              </div>
+            </div>
+            <a
+              href="https://sentinel.barakaberenge.com"
+              target="_blank"
+              class="project-link"
+              >View System ↗</a
+            >
+          </div>
+
+          <!-- Snack Haven -->
+          <div class="bento-card span-1 project-layout">
+            <div class="project-content">
+              <div class="card-icon">🥟</div>
+              <h3 class="card-title">Snack Haven</h3>
+              <p class="card-text">
+                An interactive e-commerce platform built for purchasing
+                authentic local swahili cuisine.
+              </p>
+              <div class="project-tech">AWS • E-Commerce • Hybrid Cloud</div>
+            </div>
+            <a
+              href="https://snackhaven.barakaberenge.com"
+              target="_blank"
+              class="project-link"
+              >View App ↗</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 3. EXPERIENCE & EDUCATION ================= -->
+      <section id="experience" class="scroll-section">
+        <div class="section-heading">
+          <h2>Professional <span>Background</span></h2>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Experience Timeline -->
           <div class="bento-card span-2">
-            <h3>Edge Routing & Traffic Flow</h3>
-            <pre class="ascii-diagram">
-Internet
-   │
-Cloudflare DNS
-   │
-Cloudflare Tunnel (Bypasses CGNAT)
-   │
-Proxmox VE (Bare-Metal Hypervisor)
-   │
-   └── Ubuntu Server VM
-         │
-         ├── Nginx (Reverse Proxy & TLS)
-         │
-         └── Gunicorn (Process Manager)
-               │
-               └── Flask API (Backend Logic)
-                     │
-                     └── SQLite (Local Metrics)
-            </pre>
+            <h3 class="card-title">Experience</h3>
+
+            <div class="timeline-entry">
+              <div class="timeline-header">
+                <h4>
+                  IT Full Stack Programmer
+                  <span class="crystal-accent">@ Onda Informatica</span>
+                </h4>
+                <span class="timeline-date">Nov 2023 &ndash; June 2024</span>
+              </div>
+              <p class="timeline-text">
+                Worked collaboratively on web applications, contributing to
+                frontend UI and backend features while gaining practical
+                experience in software architecture and system integration.
+              </p>
+            </div>
+
+            <div class="timeline-divider"></div>
+
+            <div class="timeline-entry">
+              <div class="timeline-header">
+                <h4>
+                  Administration Support
+                  <span class="crystal-accent">@ UIL Pineto</span>
+                </h4>
+                <span class="timeline-date">Nov 2021 &ndash; June 2022</span>
+              </div>
+              <p class="timeline-text">
+                Managed customer inquiries and administrative tasks in a
+                fast-paced environment, utilizing computer systems for efficient
+                data organization.
+              </p>
+            </div>
           </div>
 
-          <!-- Component Cards -->
-          <div class="bento-card">
-            <div class="card-icon">🌐</div>
-            <h4>Cloudflare Tunnel</h4>
-            <p>
-              Bypasses ISP Carrier-Grade NAT (CGNAT). Provides secure public
-              access without exposing router ports.
-            </p>
-          </div>
+          <!-- Education -->
+          <div class="bento-card span-1">
+            <div class="card-icon">🎓</div>
+            <h3 class="card-title">Education</h3>
 
-          <div class="bento-card">
-            <div class="card-icon">🖥️</div>
-            <h4>Proxmox & Ubuntu</h4>
-            <p>
-              Bare-metal hypervisor hosting an isolated Ubuntu Server VM with
-              dedicated CPU/RAM allocation.
+            <div class="timeline-entry">
+              <h4>BSc (Hons) Computing & IT</h4>
+              <p class="timeline-text">
+                The Open University (Online)<br /><span class="crystal-accent"
+                  >2025 - Present</span
+                >
+              </p>
+            </div>
+
+            <div class="timeline-divider"></div>
+
+            <div class="timeline-entry">
+              <h4>Advanced Diploma in Programming</h4>
+              <p class="timeline-text">
+                Italy | Final Grade: 95%<br /><span class="crystal-accent"
+                  >2022 - 2024</span
+                >
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 4. ARCHITECTURE TAB ================= -->
+      <section id="architecture" class="scroll-section">
+        <div class="section-heading">
+          <h2>System <span>Architecture</span></h2>
+          <p>
+            Traffic flow and live infrastructure telemetry for this exact
+            domain.
+          </p>
+        </div>
+
+        <div class="bento-grid">
+          <!-- Proof of Work Stats -->
+          <div class="bento-card span-1">
+            <h3 class="card-title">Live Infrastructure</h3>
+            <p class="card-text">
+              This portfolio is served from my self-hosted Proxmox hypervisor on
+              a dedicated Ubuntu VM.
             </p>
+            <div class="live-stats-box">
+              <div class="stat-item">
+                <span class="stat-label">Server Uptime</span>
+                <span class="stat-value crystal-accent" id="sys-uptime"
+                  >--</span
+                >
+              </div>
+              <div class="stat-item">
+                <span class="stat-label">Unique Views</span>
+                <span class="stat-value crystal-accent" id="visitor-count"
+                  >--</span
+                >
+              </div>
+            </div>
           </div>
 
           <!-- Configuration Toggle Cards -->
-          <div class="bento-card span-2 config-panel">
-            <h3>Infrastructure Configurations</h3>
+          <div class="bento-card span-2">
+            <h3 class="card-title">Production Configurations</h3>
 
             <div class="config-item">
               <button
                 class="config-btn"
                 onclick="toggleConfig('cfg-nginx', this)"
               >
-                <span>🚦 Nginx Reverse Proxy (sites-available)</span>
+                <span>Nginx Reverse Proxy (sites-available)</span>
                 <span class="toggle-icon">▼</span>
               </button>
               <div id="cfg-nginx" class="config-content" style="display: none">
                 <pre><code>server {
     listen 80;
-    server_name barakaberenge.com;
-    
-    location / { root /var/www/portfolio; index index.html; }
-    location /api/ { proxy_pass http://127.0.0.1:5000; }
+    server_name barakaberenge.com www.barakaberenge.com;
+
+    # Serve static frontend HTML/CSS/JS
+    location / {
+        root /var/www/portfolio;
+        index index.html;
+        try_files $uri $uri/ =404;
+    }
+
+    # Proxy API requests to Python Flask backend
+    location /api/ {
+        proxy_pass http://127.0.0.1:5000;
+        proxy_set_header Host $host;
+        proxy_set_header X-Real-IP $remote_addr;
+        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
+    }
+
 }</code></pre>
               </div>
             </div>
 
-            <div class="config-item">
+            <div class="config-item" style="margin-top: 10px">
               <button
                 class="config-btn"
                 onclick="toggleConfig('cfg-gunicorn', this)"
               >
-                <span>⚙️ Gunicorn systemd Service</span>
+                <span>Gunicorn systemd Service</span>
                 <span class="toggle-icon">▼</span>
               </button>
               <div
@@ -242,52 +320,23 @@ Proxmox VE (Bare-Metal Hypervisor)
                 class="config-content"
                 style="display: none"
               >
-                <pre><code>[Service]
+                <pre><code>[Unit]
+Description=Gunicorn instance to serve Flask API
+After=network.target
+
+[Service]
 User=www-data
+Group=www-data
 WorkingDirectory=/var/www/portfolio/api
+Environment="PATH=/var/www/portfolio/api/venv/bin"
 ExecStart=/var/www/portfolio/api/venv/bin/gunicorn --workers 3 --bind 127.0.0.1:5000 app:app
-Restart=always</code></pre>
+Restart=always
+
+[Install]
+WantedBy=multi-user.target</code></pre>
               </div>
             </div>
           </div>
-        </div>
-      </section>
-
-      <!-- ================= PROJECTS TAB ================= -->
-      <section id="projects" class="tab-content" style="display: none">
-        <div class="section-header">
-          <h2>Featured <span>Projects</span></h2>
-          <p>End-to-end systems I have designed and deployed.</p>
-        </div>
-
-        <div class="bento-grid">
-          <a
-            href="https://sentinel.barakaberenge.com"
-            target="_blank"
-            class="bento-card project-card"
-          >
-            <div class="card-icon">🛡️</div>
-            <h3>Sentinel Platform</h3>
-            <p>
-              An enterprise telemetry & fleet management dashboard providing
-              live geolocation and background heartbeat monitoring.
-            </p>
-            <span class="project-link">Launch App →</span>
-          </a>
-
-          <a
-            href="https://snackhaven.barakaberenge.com"
-            target="_blank"
-            class="bento-card project-card"
-          >
-            <div class="card-icon">🥟</div>
-            <h3>Snack Haven</h3>
-            <p>
-              An interactive e-commerce platform hosted on AWS, featuring a
-              custom telemetry pipeline routed back to my Proxmox server.
-            </p>
-            <span class="project-link">Launch App →</span>
-          </a>
         </div>
       </section>
 
@@ -296,9 +345,6 @@ Restart=always</code></pre>
         <div class="footer-content">
           <div class="footer-text">
             <p>&copy; 2026 Baraka Pande Berenge.</p>
-            <p class="footer-subtext">
-              Designed, engineered, and self-hosted from scratch.
-            </p>
           </div>
           <div class="footer-links">
             <a href="mailto:barakaberenge@gmail.com" class="footer-link"
