@@ -10,27 +10,14 @@
     <!-- The Liquid Gray Animated Background -->
     <div class="liquid-bg"></div>
 
-    <!-- The Top Telemetry HUD (Dynamic Island) -->
-    <div class="telemetry-hud">
-      <span class="pulse-dot" id="api-status-dot"></span>
-      <span class="hud-text" id="api-status">Connecting...</span>
-      <span class="hud-divider">|</span>
-      <span class="hud-text">CPU: <span id="sys-cpu">--</span></span>
-      <span class="hud-divider">|</span>
-      <span class="hud-text">RAM: <span id="sys-ram">--</span></span>
-      <span class="hud-divider">|</span>
-      <span class="hud-text">Uptime: <span id="sys-uptime">--</span></span>
-    </div>
-
-    <!-- The Floating Sidebar -->
-    <nav class="floating-sidebar">
+    <!-- 1. TOP NAVBAR -->
+    <nav class="top-nav">
       <div class="brand">
         <h2>Baraka<span>.</span></h2>
-        <p>Systems & Cloud</p>
       </div>
       <div class="nav-links">
         <button class="nav-btn active" onclick="switchTab('welcome')">
-          Welcome
+          Home & About
         </button>
         <button class="nav-btn" onclick="switchTab('architecture')">
           Architecture
@@ -38,65 +25,48 @@
         <button class="nav-btn" onclick="switchTab('projects')">
           Projects
         </button>
-        <button class="nav-btn" onclick="switchTab('resume')">CV</button>
-      </div>
-      <!-- Visitor Count docked at the bottom of the sidebar -->
-      <div class="visitor-dock">
-        <span class="dock-label">Unique Views</span>
-        <span class="dock-value" id="visitor-count">--</span>
       </div>
     </nav>
 
-    <!-- Main Content Area -->
+    <!-- 2. SIDE TELEMETRY WIDGET -->
+    <div class="side-telemetry">
+      <div class="telemetry-header">
+        <span class="pulse-dot" id="api-status-dot"></span>
+        <span id="api-status" style="color: #ffffff; font-weight: bold"
+          >Connecting...</span
+        >
+      </div>
+      <div class="telemetry-data">
+        <div class="t-row">
+          <span>CPU</span> <span id="sys-cpu" class="mono">--</span>
+        </div>
+        <div class="t-row">
+          <span>RAM</span> <span id="sys-ram" class="mono">--</span>
+        </div>
+        <div class="t-row">
+          <span>Uptime</span> <span id="sys-uptime" class="mono">--</span>
+        </div>
+        <div class="t-divider"></div>
+        <div class="t-row">
+          <span>Views</span> <span id="visitor-count" class="mono">--</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- 3. MAIN CONTENT AREA -->
     <main class="content-area">
-      <!-- Welcome Tab (Example of Bento Box styling) -->
-      <!-- Welcome Tab -->
+      <!-- ================= WELCOME / INTERACTIVE CV TAB ================= -->
       <section id="welcome" class="tab-content active-tab">
         <div class="section-header">
-          <h2>Hello, I'm <span>Baraka.</span></h2>
-          <p>Computing & IT Student | Systems Builder</p>
+          <h2>Systems, Cloud & <span>Infrastructure</span></h2>
+          <p>
+            I don't just write code; I engineer the environments that run it.
+          </p>
         </div>
 
         <div class="bento-grid">
-          <!-- Main Hero Card -->
-          <div class="bento-card span-2">
-            <h1>
-              Systems, Cloud & <br /><span class="silver-glow"
-                >Infrastructure</span
-              >
-            </h1>
-            <p style="font-size: 1.2rem; color: #d4d4d4; margin-top: 10px">
-              I don't just write code; I engineer the environments that run it.
-            </p>
-          </div>
-
-          <!-- The "Who am I" Card -->
-          <div class="bento-card">
-            <div class="card-icon">👋</div>
-            <h3>The Journey</h3>
-            <p>
-              I am currently pursuing a BSc in Computing & IT at The Open
-              University, based in Italy. My tech journey started in full-stack
-              software development, but I quickly realized my true obsession
-              lies in the infrastructure beneath the code—cloud architecture,
-              networking, and high-availability systems.
-            </p>
-          </div>
-
-          <!-- The "What I Build" Card -->
-          <div class="bento-card">
-            <div class="card-icon">🛠️</div>
-            <h3>What I Do</h3>
-            <p>
-              I bridge the gap between development and operations. Whether I am
-              architecting enterprise hardware telemetry platforms (Sentinel),
-              configuring Zero-Trust VPNs, or writing automated CI/CD pipelines,
-              I thrive on solving complex system-level problems.
-            </p>
-          </div>
-
-          <!-- The "Proof of Work" Card (The original technical flex, but better framed) -->
-          <div class="bento-card span-2" style="border-left: 4px solid #10b981">
+          <!-- Proof of Work (Hero) -->
+          <div class="bento-card span-2" style="border-top: 3px solid #10b981">
             <div class="card-icon">⚡</div>
             <h3>Proof of Work: This Portfolio</h3>
             <p>
@@ -109,10 +79,83 @@
               <strong>GitHub Actions</strong>.
             </p>
           </div>
+
+          <!-- The Journey -->
+          <div class="bento-card">
+            <div class="card-icon">👋</div>
+            <h3>The Journey</h3>
+            <p>
+              Currently pursuing a BSc in Computing & IT at The Open University.
+              My tech journey started in full-stack software development, but I
+              quickly realized my true obsession lies in the infrastructure
+              beneath the code—cloud architecture, networking, and
+              high-availability systems.
+            </p>
+          </div>
+
+          <!-- Core Skills (Replaces CV Skills) -->
+          <div class="bento-card">
+            <div class="card-icon">🛠️</div>
+            <h3>Core Arsenal</h3>
+            <div class="skills-category">
+              <div class="cv-skills">
+                <span class="cv-skill-tag">Linux (Ubuntu)</span>
+                <span class="cv-skill-tag">Proxmox VE</span>
+                <span class="cv-skill-tag">Docker</span>
+                <span class="cv-skill-tag">Cloudflare Tunnels</span>
+                <span class="cv-skill-tag">Tailscale VPN</span>
+                <span class="cv-skill-tag">Python (Flask)</span>
+                <span class="cv-skill-tag">AWS Fundamentals</span>
+                <span class="cv-skill-tag">GitHub Actions</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Experience -->
+          <div class="bento-card">
+            <div class="card-icon">💼</div>
+            <h3>Experience</h3>
+            <div class="timeline-item">
+              <h4>IT Full Stack Programmer</h4>
+              <span class="timeline-date"
+                >Nov 2023 – June 2024 | Onda Informatica</span
+              >
+              <p>
+                Collaborated on system development, architecture, data flow, and
+                software troubleshooting.
+              </p>
+            </div>
+            <div class="timeline-item" style="margin-top: 15px">
+              <h4>Administration Support</h4>
+              <span class="timeline-date"
+                >Nov 2021 – June 2022 | UIL Pineto</span
+              >
+              <p>
+                Managed systems data organization and fast-paced client
+                inquiries.
+              </p>
+            </div>
+          </div>
+
+          <!-- Education -->
+          <div class="bento-card">
+            <div class="card-icon">🎓</div>
+            <h3>Education</h3>
+            <div class="timeline-item">
+              <h4>BSc (Hons) Computing & IT</h4>
+              <span class="timeline-date"
+                >2025 - Present | The Open University</span
+              >
+            </div>
+            <div class="timeline-item" style="margin-top: 15px">
+              <h4>Adv. Diploma in Programming</h4>
+              <span class="timeline-date">2022 - 2024 | Final Grade: 95%</span>
+            </div>
+          </div>
         </div>
       </section>
 
-      <!-- Architecture Tab -->
+      <!-- ================= ARCHITECTURE TAB ================= -->
       <section id="architecture" class="tab-content" style="display: none">
         <div class="section-header">
           <h2>System <span>Architecture</span></h2>
@@ -210,7 +253,7 @@ Restart=always</code></pre>
         </div>
       </section>
 
-      <!-- Projects Tab -->
+      <!-- ================= PROJECTS TAB ================= -->
       <section id="projects" class="tab-content" style="display: none">
         <div class="section-header">
           <h2>Featured <span>Projects</span></h2>
@@ -248,204 +291,6 @@ Restart=always</code></pre>
         </div>
       </section>
 
-      <!-- CV / Resume Tab -->
-      <section id="resume" class="tab-content" style="display: none">
-        <div class="section-header">
-          <h2>Curriculum <span>Vitae</span></h2>
-          <p>My professional background, education, and core competencies.</p>
-        </div>
-
-        <div class="resume-document">
-          <header class="cv-header">
-            <h1 class="cv-name">Baraka Pande Berenge</h1>
-            <div class="cv-title">Systems & Cloud Infrastructure</div>
-            <div class="cv-contact">
-              <a href="mailto:barakaberenge@gmail.com"
-                >barakaberenge@gmail.com</a
-              >
-              <span class="cv-divider">|</span>
-              <a href="tel:+393881187358">+39 388 118 7358</a>
-              <span class="cv-divider">|</span>
-              <span>Italy</span>
-            </div>
-          </header>
-
-          <div class="cv-body">
-            <!-- Profile -->
-            <div class="cv-section">
-              <h3>Profile</h3>
-              <p class="cv-text">
-                I am an IT and Software student with a strong passion for
-                building practical, end-to-end systems. Currently pursuing a BSc
-                in Computing & IT at The Open University, I combine my academic
-                learning with hands-on project development. From managing
-                virtualized datacenters to deploying cloud-hosted applications,
-                I am a fast learner and detail-oriented, driven to bring my
-                practical programming skills and enterprise infrastructure
-                understanding to a professional environment.
-              </p>
-            </div>
-
-            <!-- Core Skills -->
-            <div class="cv-section">
-              <h3>Core Skills</h3>
-              <div class="skills-category">
-                <h4>Infrastructure & Tools</h4>
-                <div class="cv-skills">
-                  <span class="cv-skill-tag">Linux (Ubuntu)</span>
-                  <span class="cv-skill-tag">Proxmox VE</span>
-                  <span class="cv-skill-tag">Docker</span>
-                  <span class="cv-skill-tag">Nginx</span>
-                  <span class="cv-skill-tag">Cloudflare Tunnels</span>
-                  <span class="cv-skill-tag">Tailscale (Zero-Trust)</span>
-                  <span class="cv-skill-tag">CI/CD (GitHub Actions)</span>
-                  <span class="cv-skill-tag">Bash & PowerShell</span>
-                </div>
-              </div>
-              <div class="skills-category">
-                <h4>Development & Cloud</h4>
-                <div class="cv-skills">
-                  <span class="cv-skill-tag">AWS Fundamentals</span>
-                  <span class="cv-skill-tag">Python (Flask)</span>
-                  <span class="cv-skill-tag">PostgreSQL / SQLite</span>
-                  <span class="cv-skill-tag">REST APIs</span>
-                  <span class="cv-skill-tag">Dart (Flutter)</span>
-                  <span class="cv-skill-tag">HTML/CSS & Tailwind</span>
-                </div>
-              </div>
-            </div>
-
-            <!-- Technical Projects -->
-            <div class="cv-section">
-              <h3>Technical Projects & Infrastructure</h3>
-
-              <div class="cv-item">
-                <div class="cv-item-header">
-                  <div class="cv-item-title">
-                    Self-Hosted Datacenter & Edge Routing
-                  </div>
-                  <div class="cv-item-date">2024 - Present</div>
-                </div>
-                <ul>
-                  <li>
-                    Architected a Proxmox/Ubuntu virtualized environment,
-                    utilizing Cloudflare Tunnels and Tailscale VPN for secure
-                    public application routing and zero-trust remote access.
-                  </li>
-                  <li>
-                    Automated CI/CD deployments via GitHub Actions, integrating
-                    Nginx and systemd for reliable, zero-downtime service
-                    hosting.
-                  </li>
-                </ul>
-              </div>
-
-              <div class="cv-item">
-                <div class="cv-item-header">
-                  <div class="cv-item-title">
-                    Sentinel – Enterprise Hardware Telemetry
-                  </div>
-                  <div class="cv-item-date">Personal Project</div>
-                </div>
-                <ul>
-                  <li>
-                    Built a containerized (Docker) full-stack Flask/Tailwind web
-                    dashboard with REST APIs, deployed directly onto my
-                    self-hosted server.
-                  </li>
-                  <li>
-                    Engineered silent background tracking scripts for Windows
-                    (PowerShell) and Unix (Bash), alongside a native mobile
-                    agent (Flutter).
-                  </li>
-                </ul>
-              </div>
-
-              <div class="cv-item">
-                <div class="cv-item-header">
-                  <div class="cv-item-title">
-                    Cloud Resume Challenge: Snack Haven
-                  </div>
-                  <div class="cv-item-date">Personal Project</div>
-                </div>
-                <ul>
-                  <li>
-                    Deployed an AWS-hosted web application utilizing core cloud
-                    compute and storage infrastructure.
-                  </li>
-                  <li>
-                    Embedded a custom telemetry pipeline to route live site
-                    traffic data securely back to my self-hosted backend.
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Professional Experience -->
-            <div class="cv-section">
-              <h3>Professional Experience</h3>
-
-              <div class="cv-item">
-                <div class="cv-item-header">
-                  <div class="cv-item-title">IT Full Stack Programmer</div>
-                  <div class="cv-item-date">Nov 2023 – June 2024</div>
-                </div>
-                <div class="cv-item-subtitle">Onda Informatica | Italy</div>
-                <ul>
-                  <li>
-                    Collaborated with a technical team on system development
-                    projects.
-                  </li>
-                  <li>
-                    Built a practical understanding of system architecture, data
-                    flow, and software troubleshooting.
-                  </li>
-                </ul>
-              </div>
-
-              <div class="cv-item">
-                <div class="cv-item-header">
-                  <div class="cv-item-title">
-                    Reception & Administration Support
-                  </div>
-                  <div class="cv-item-date">Nov 2021 – June 2022</div>
-                </div>
-                <div class="cv-item-subtitle">UIL Pineto | Italy</div>
-                <ul>
-                  <li>
-                    Managed customer inquiries and administrative tasks in a
-                    fast-paced environment, utilizing computer systems for data
-                    organization.
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <!-- Education -->
-            <div class="cv-section">
-              <h3>Education</h3>
-
-              <div class="cv-item">
-                <div class="cv-item-header">
-                  <div class="cv-item-title">BSc (Hons) Computing & IT</div>
-                  <div class="cv-item-date">2025 - Present</div>
-                </div>
-                <div class="cv-item-subtitle">The Open University (Online)</div>
-              </div>
-
-              <div class="cv-item">
-                <div class="cv-item-header">
-                  <div class="cv-item-title">
-                    Advanced Diploma in Programming
-                  </div>
-                  <div class="cv-item-date">2022 - 2024</div>
-                </div>
-                <div class="cv-item-subtitle">Italy | Final Grade: 95%</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
       <!-- Global Footer -->
       <footer class="site-footer">
         <div class="footer-content">
@@ -477,6 +322,7 @@ Restart=always</code></pre>
         </div>
       </footer>
     </main>
+
     <script src="java-script/app.js"></script>
     <script src="java-script/dashboard.js"></script>
   </body>
