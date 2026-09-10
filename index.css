@@ -468,11 +468,17 @@ body {
   border-color: rgba(204, 214, 246, 0.3); /* Subtle silver border on hover */
 }
 .social-icon {
+  disolay: flex;
   font-size: 2.5rem;
   color: #8892b0;
   font-weight: 700;
   font-family: "JetBrains Mono", monospace;
   transition: color 0.3s;
+}
+/* This targets the SVG inside the icon container and scales it perfectly */
+.social-icon svg {
+  width: 45px;
+  height: 45px;
 }
 .social-card:hover .social-icon {
   color: #ccd6f6; /* Icon turns icy silver on hover */
