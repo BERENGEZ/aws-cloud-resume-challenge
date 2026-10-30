@@ -42,15 +42,6 @@
         <span class="hud-text"
           >Response Time: <span id="api-latency" class="mono">--</span></span
         >
-        <!-- <span class="hud-divider">|</span>
-        <span class="hud-text"
-          >Host OS: <span id="sys-os" class="mono">--</span></span
-        > -->
-       <!--  <span class="hud-divider">|</span>
-        <span class="hud-text"
-          >Os Kernel: <span id="sys-kernel" class="mono">--</span></span
-        >   --> 
-
       </div>
     </nav>
 
@@ -66,9 +57,12 @@
           </h1>
           <p class="hero-desc">
             I am Baraka Berenge. I design, deploy, and maintain secure,
-            self-hosted enterprise environments, containerized deployments, and
+            self-hosted environments, containerized deployments, and
             full-stack systems.
           </p>
+          <div style="margin-top: 30px;">
+            <a href="/Baraka-Berenge-CV.pdf" class="cta-btn" target="_blank" style="display: inline-block; text-decoration: none;">Download CV</a>
+          </div>
         </div>
 
         <div class="bento-grid">
@@ -78,9 +72,9 @@
             <p class="card-text">
               I am an IT student currently pursuing a BSc (Honours) in Computing
               & IT: Communications & Software at The Open University. I have a
-              strong interest in IT systems, cloud technologies, and enterprise
-              environments. I combine my academic learning with hands-on project
-              development from architecting full-stack telemetry platforms to
+              strong interest in IT systems, cloud technologies, and scalable
+              infrastructure. I combine my academic learning with hands-on project
+              development, from architecting full-stack telemetry platforms to
               deploying cloud-hosted applications. I am highly driven and
               motivated to gain practical experience in IT support, systems
               engineering, or audit-related roles.
@@ -106,8 +100,7 @@
             <div class="skills-wrapper">
               <span class="skill-tag">Linux (Ubuntu/Debian)</span>
               <span class="skill-tag">Proxmox VE</span>
-              <span class="skill-tag">Docker & Compose</span>
-              <span class="skill-tag">Tailscale (Zero-Trust)</span>
+              <span class="skill-tag">Docker</span>
               <span class="skill-tag">Cloudflare Tunnels</span>
               <span class="skill-tag">AWS Fundamentals</span>
               <span class="skill-tag">GitHub Actions (CI/CD)</span>
@@ -116,6 +109,11 @@
               <span class="skill-tag">PostgreSQL & SQLite</span>
               <span class="skill-tag">Terraform</span>
               <span class="skill-tag">Javascript</span>
+              <span class="skill-tag">Kubernetes (K3s)</span>
+              <span class="skill-tag">Tailscale</span>
+              <span class="skill-tag">AWS (S3, Lambda, DynamoDB)</span>
+
+
             </div>
           </div>
           <!-- ===  SOCIAL LINKS CARD === -->
@@ -146,7 +144,7 @@
           </a>
 
           <a
-            href="mailto:barakaberenge@gmail.com"
+            href="mailto:berengez@proton.me"
             class="bento-card span-1 social-card"
           >
             <div class="social-icon">
@@ -159,6 +157,7 @@
           </a>
         </div>
       </section>
+
       <!-- ================= 2. PROJECTS SECTION ================= -->
       <section id="projects" class="scroll-section">
         <div class="section-heading">
@@ -171,14 +170,12 @@
           <div class="bento-card span-2 project-layout">
             <div class="project-content">
               <div class="card-icon">🛡️</div>
-              <h3 class="card-title">Sentinel Platform</h3>
+              <h3 class="card-title">Project Sentinel</h3>
               <p class="card-text">
-                An enterprise telemetry & device management platform with a
-                full-stack dashboard for live geolocation tracking, device
-                health monitoring, and system analytics.
+                A self-hosted, real-time hardware telemetry and family-safety platform featuring group-isolated SOS alerts and an incident audit log.
               </p>
               <div class="project-tech">
-                Python • Flask • PostgreSQL • Docker
+                Python • Flask • K3s • PostgreSQL • Socket.IO
               </div>
             </div>
             <a
@@ -195,10 +192,9 @@
               <div class="card-icon">🥟</div>
               <h3 class="card-title">Snack Haven</h3>
               <p class="card-text">
-                An interactive e-commerce platform built for purchasing
-                authentic local swahili cuisine.
+                An e-commerce platform initially deployed on AWS to learn cloud workflows, subsequently migrated to a self-hosted Proxmox environment.
               </p>
-              <div class="project-tech">AWS • E-Commerce • Hybrid Cloud</div>
+              <div class="project-tech">Proxmox • Linux VM • Nginx • Migrated from AWS</div>
             </div>
             <a
               href="https://snackhaven.barakaberenge.com"
@@ -347,7 +343,6 @@
         proxy_set_header X-Real-IP $remote_addr;
         proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
     }
-
 }</code></pre>
               </div>
             </div>
@@ -382,14 +377,25 @@ WantedBy=multi-user.target</code></pre>
               </div>
             </div>
           </div>
+
+          <!-- Lessons Learned Card -->
+          <div class="bento-card" style="grid-column: 1 / -1;">
+            <h3 class="card-title">Lessons Learned</h3>
+            <ul class="card-text" style="list-style-type: disc; margin-left: 20px; display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+              <li><strong>Networking:</strong> Forced HTTP/2 on <code>cloudflared</code> to fix persistent 502 errors caused by UDP/QUIC NAT collisions.</li>
+              <li><strong>Orchestration:</strong> Transitioned from Docker Compose to a 3-node K3s cluster to decouple stateful data and enable zero-downtime rolling updates.</li>
+              <li><strong>Security:</strong> Identified and patched an IDOR (Insecure Direct Object Reference) vulnerability in my custom SOS API to ensure strict session-bound token validation.</li>
+            </ul>
+          </div>
         </div>
       </section>
+
       <!-- ============ 5. CONTACT / CTA ============= -->
       <section id="contact" class="scroll-section">
         <div class="cta-block">
           <h2>Wanna Reach Out?</h2>
           <p>I will be delighted to hear from you!</p>
-          <a href="mailto:barakaberenge@gmail.com" class="cta-btn"
+          <a href="mailto:berengez@protn.me" class="cta-btn"
             >Start a Conversation ✉</a
           >
         </div>
@@ -401,7 +407,6 @@ WantedBy=multi-user.target</code></pre>
           <div class="footer-text">
             <p>&copy; 2026 Baraka Pande Berenge.</p>
           </div>         
-          </div>
         </div>
       </footer>
     </main>
