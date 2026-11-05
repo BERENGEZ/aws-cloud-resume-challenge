@@ -1,43 +1,40 @@
-# AWS Cloud Resume Challenge
+# Portfolio Website & AWS Cloud Resume Challenge
 
-This project is a full-stack serverless resume application built on AWS using Infrastructure as Code (Terraform) and automated deployment.
+This repository contains the Infrastructure as Code (Terraform) and deployment configurations for my official portfolio website. 
 
-## Live Website
+The project was initially architected as a fully serverless deployment on AWS (The Cloud Resume Challenge). To optimize costs after the AWS free tier concluded, I successfully migrated the live production workload to my own self-hosted infrastructure.
 
-Check out the live resume here: [https://d3itoxd5u4tvw2.cloudfront.net](https://d3itoxd5u4tvw2.cloudfront.net)
-
----
-
-## The Architecture
-
-[ User Browser ]
-│
-├───► (HTML/CSS Static Page) ───► [ Amazon CloudFront ] ───► [ AWS S3 Bucket ]
-│
-
-└───► (JavaScript Fetch) ───────► [ AWS API Gateway ] ───► [ AWS Lambda ] ───► [ DynamoDB ]
-
-The system breaks down into two core layers:
-
-- **Frontend:** A responsive HTML/CSS resume hosted inside an Amazon S3 bucket, distributed globally via a CloudFront CDN distribution to ensure fast load times.
-- **Backend:** A dynamic visitor counter. When the page loads, an asynchronous JavaScript fetch request hits an AWS API Gateway endpoint. This triggers an AWS Lambda function (written in Python 3.12) that increments a visitor count record stored in an Amazon DynamoDB NoSQL table and returns the updated number to the screen.
+🌐 **Live Website:** [barakaberenge.com](https://barakaberenge.com)
 
 ---
 
-## Problems Solved During Development
+## 🏗️ Phase 2: Current Architecture (Self-Hosted On-Premises)
+The live portfolio is currently hosted on my personal bare-metal infrastructure. This phase focused on network security, hypervisor management, and zero-trust ingress.
 
-Building this project required troubleshooting several core infrastructure roadblocks:
-
-- **CORS Pre-flight Issues:** The browser initially blocked the website from reading data from the API endpoint. I fixed this by updating the Terraform routing configuration from a strict `GET` method to an `ANY` route catchment key. This allowed the backend Python script to successfully capture and respond to browser `OPTIONS` pre-flight requests with the correct access control headers.
-- **CloudFront Edge Caching:** Because CloudFront caches files at global edge locations for up to 24 hours, updates made to the frontend HTML file weren't appearing live. I resolved this by adding manual cache invalidations (`/*`) to force immediate updates across the CDN distribution network.
+* **Hypervisor:** Proxmox VE running Ubuntu Server VMs.
+* **Web Server:** Nginx and Gunicorn.
+* **Ingress & Security:** Traffic is securely routed via a Cloudflare Zero Trust Tunnel (`cloudflared`). The firewall (`ufw`) explicitly drops all inbound web ports, making the server invisible to the public internet while securely serving the website.
+* **Networking:** 5-node Tailscale mesh network for secure remote administration.
 
 ---
 
-## Technologies Used
+## ☁️ Phase 1: The AWS Cloud Resume Challenge (Archived)
+Initially, this project was built entirely on AWS using Terraform for automated provisioning and GitHub Actions for CI/CD.
 
-- **Frontend:** HTML5, CSS3, JavaScript (Fetch API)
-- **Infrastructure as Code:** Terraform
-- **Compute:** AWS Lambda (Python)
-- **API:** AWS API Gateway
-- **Storage & CDN:** AWS S3, Amazon CloudFront
-- **Database:** Amazon DynamoDB
+### Historical AWS Architecture
+* **Frontend:** A responsive HTML/CSS/JS frontend hosted in an Amazon S3 bucket, distributed globally via an Amazon CloudFront CDN.
+* **Backend:** A serverless visitor counter triggered by an asynchronous JavaScript `fetch()` request. The request passed through an AWS API Gateway endpoint to an AWS Lambda function (Python 3.12), which updated a persistent counter in an Amazon DynamoDB NoSQL table.
+* **Automation:** A GitHub Actions pipeline automatically tested and deployed Terraform updates upon code push.
+
+### Technical Roadblocks Solved in AWS
+1. **CORS Pre-flight Issues:** Browsers initially blocked the website from reading data from the API endpoint. I resolved this by updating the Terraform routing configuration from a strict `GET` method to an `ANY` route catchment key, allowing the backend Python script to intercept `OPTIONS` pre-flight requests and respond with the correct Access-Control headers.
+2. **CloudFront Edge Caching:** Because CloudFront caches files at edge locations for up to 24 hours, updates to the HTML frontend were not propagating. I resolved this by implementing manual cache invalidations (`/*`) in the deployment pipeline to force immediate cache purges across the CDN.
+
+---
+
+## 💻 Core Technologies Used
+* **Infrastructure as Code:** Terraform
+* **Cloud Platform (Archived):** AWS (S3, CloudFront, API Gateway, Lambda, DynamoDB)
+* **Self-Hosted Infrastructure (Active):** Proxmox VE, Ubuntu Server, Nginx, Cloudflare Tunnels, Tailscale
+* **CI/CD & Version Control:** GitHub Actions, Git
+* **Languages:** Python 3.12, JavaScript (Fetch API), HTML5, CSS3
